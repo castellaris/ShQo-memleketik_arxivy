@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>История края — Государственный архив ВКО</title>
+    <!-- Подключение Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label"></div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Панель доступности -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box" style="margin-top: -7px;">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    
+                    <!-- Выпадающий список филиалов -->
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Интегрированный блок панелей -->
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="branch-ustk.html" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <div id="main-content">
+                    <div>
+                        <div class="content-text">
+                            <h2>История края</h2>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">►&nbsp;&nbsp;КРАЙ&nbsp; СОКРОВИЩ &nbsp;- &nbsp;ВОСТОЧНЫЙ &nbsp;КАЗАХСТАН</span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<strong>&laquo;Восток &ndash; поэзия силы&raquo;</strong>&nbsp;/страницы истории циркового искусства и спорта Восточного Казахстана/</span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-1.html">Герои фронта &ndash; герои спорта</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-2.html">Цирк в Азии и Сибири</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-3.html">Семипалатинский цирк</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-4.html">Славная школа борьбы</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-5.html">Дополнения к статье &laquo;Славная Школа Борьбы&raquo;</a></span>[cite: 14]</p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-6.html">Седые были Иртыша</a> (На перекрестке караванных и водных путей возник своеобразный культурный оазис...)</span>[cite: 14]</p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-7.html">Семипалатинские гастроли</a></span>[cite: 14]</p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-8.html">Семипалатинцы на гастролях. Баку 1960г.</a></span>[cite: 14]</p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-9.html">Легенды Семипалатинска</a></span>[cite: 14]</p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-10.html">Алексей - брат титана</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-11.html">Василий Щербаков</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-detail-12.html">Феофан Лавренов</a></span>[cite: 14]</p>
+
+                            <p><strong><span style="font-family: 'times new roman',times; font-size: medium; color: #800000;">СПОРТИВНОЕ КРАЕВЕДЕНИЕ</span></strong><br /><span style="font-family: 'times new roman',times; font-size: medium; color: #000000;">(из книги В.Подрезова "Восток" - поэзия силы)</span>[cite: 14]</p>
+                            <p>
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-1.html">Первые штангисты</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-2.html">"Восток" - поэзия силы</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-3.html">Тяжелая атлетика в Семипалатинске</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-4.html">Борьба самбо</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-5.html">Прекрасным быть хочу!</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-6.html">Пауэрлифтинг в Восточном Казахстане</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-7.html">Ветераны - рыцари железной игры</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-8.html">Гиревой спорт</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-9.html">Верная рука</a></span></span><br />
+                                <span style="color: #000000;"><span style="font-family: 'times new roman',times; font-size: medium;"><span style="color: #800000;">&diams;</span> <a href="history-sport-10.html">Свежесть горных снегов</a></span></span>
+                            </p>[cite: 14]
+
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-1.html">Дороги Рудного Алтая</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-2.html">Горный промысел на Алтае</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-3.html">Горят Алтайские зори</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-4.html">Потомок Золотой Бабы</a> /о Г.Зырянове/</span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-5.html">Зыряновское месторождение</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-6.html">Исторические фотографии Зыряновска хранились во Франции</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-7.html">Зыряновская сабля</a> /воспоминания ветерана ВОВ Н.П.Малова/</span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-8.html">Прошлое города</a> /о г.Зайсан/</span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-9.html">Дорога Рубцовка - Риддер</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-10.html">Возвращение Риддера</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-11.html">Городок мой провинциальный</a> /о г.Аягоз/</span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-12.html">Историческая справка села Прапорщиково</a></span>[cite: 14]</p>
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">&bull;&nbsp;<a href="history-geo-13.html">Хождения за три моря</a> /историческая справка г.Шемонаиха/</span>[cite: 14]</p>
+
+                            <p><span style="font-family: 'times new roman', times; font-size: medium;">►&nbsp;&nbsp;МОЙ&nbsp;&nbsp;ГРАД&nbsp; УСТЬКАМЕННЫЙ</span>[cite: 14]</p>
+                            <ul>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-1.html">Архивные документы 1719&ndash;1720 годов о выборе места и основании Усть-Каменогорской крепости</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-2.html">Посланцы Петра Великого (исторический очерк)</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-3.html">Год рождения 1720-й...(исторический очерк об образовании г.Усть-Каменогорска)</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-4.html">История города Усть-Каменогорска в освещении частных газет Сибири конца ХIХ -начала ХХ в.в.</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-5.html">Город моей юности</a> /А.М.Волков об Усть-Каменогорске/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-6.html">У истоков</a> /Н.Анов об Усть-Каменогорске/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-7.html">Устье Каменных гор</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-8.html">Незабываемые дни</a> /о С.М.Кирове/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-9.html">Жизнь ему дали геологи</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-10.html">Далекое - близкое</a> /Е.Диордиев об Усть-Каменогорске/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-11.html">Немного истории</a> /О 1-ом генплане крепости Усть-Каменогорской/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-12.html">Все тот же 1913-й год</a> /"Свод обязательных постановлений для жителей Усть-Каменогорска"/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-13.html">Совдеп и пленные</a> /о военнопленных чехах в Усть-Каменогорске/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-14.html">Воспоминания П.Ф.Столбова</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-15.html">Превратности судьбы</a> /Усть-Каменогорск ХIХ-начала ХХв.в./</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-16.html">Нева - Иртыш</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-17.html">Народный дом</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-18.html">Мариинка</a> /о женской гимназии г.Усть-Каменогорска/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-19.html">Типография найдена, типография не терялась</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-20.html">Первая страница</a> /летопись УК СЦК/</span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-21.html">"Усть-Каменогорская жизнь" в 1918 году...</a></span>[cite: 14]</li>
+                                <li><span style="font-family: 'times new roman', times; font-size: medium;"><a href="history-uk-22.html">О дате создания театра в городе Усть-Каменогорске</a></span>[cite: 14]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="accessibility.html" data-i18n="right-accessibility">Система чтения с экрана для слабовидящих</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+                <br />
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

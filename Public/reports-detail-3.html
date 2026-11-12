@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="alternate" href="http://e-arhiv.vko.gov.kz/kk" hreflang="kk" />
+	<link rel="alternate" href="http://e-arhiv.vko.gov.kz/ru" hreflang="ru" />
+    <title>Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="/Content/css?v1.0" rel="stylesheet"/>
+
+    <link href="/Content/dropzonescss?v=_LwxzYcnE1rZO08BwoOGzDz2KH9-5gCjdgh-g5moIHU1" rel="stylesheet"/>
+
+
+    <script src="/bundles/dropzonescripts?v=sUxAkHVp92QYPFtzqFPlLpyXpRdRDSdZCcFmRP-AgXI1"></script>
+
+    <script src="/bundles/modernizr?v1.0"></script>
+
+    <script src="/bundles/jquery?v1.0"></script>
+<script src="/bundles/jqueryui?v1.0"></script>
+
+    <script src="/bundles/unobtrusive?v=jmjhTWiGrUMlGQS2hayanNTeGVZ9FC7i0HnCBpQ4IZ81"></script>
+
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        
+
+
+
+
+
+<div class="content-text">
+   <h2>Информационные технологии в архивных учреждениях Восточно-Казахстанской области</h2>
+   
+   <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;<strong><span style="color: #000000;"><em>Инесса Юрьевна Носова </em></span></strong><span style="color: #000000;"><em>- руководитель отдела информационных технологий госархива ВКО</em></span></span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;</span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Проблема возрастания объёмов&nbsp; документов сегодня актуальна для всех архивных учреждений. Современные информационно-коммуникационные технологии слабо внедряются в архивную отрасль, вследствие чего огромный информационный потенциал Национального архивного фонда минимально используется для удовлетворения растущего спроса граждан, государства и общества на информацию. Наиболее эффективным решением данной проблемы является организация&nbsp; и создание &laquo;электронного архива&raquo;.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">На сегодняшний день в государственных архивах Восточно-Казахстанской области хранится более 2-х млн. дел на бумажной основе, из них около 50 тыс. дел являются особо ценными. Отсюда задача &ndash; грамотно управлять огромным объемом документов.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Архивные учреждения Восточно-Казахстанской области одними из первых в Республике Казахстан начали работу по созданию &laquo;электронного архива&raquo;. </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В соответствии с Планом мероприятий по реализации Государственной программы формирования &laquo;электронного правительства&raquo; в Республике Казахстан на 2005-2007 годы, утвержденным постановлением Правительства Республики Казахстан от 8 декабря 2004 года № 1286 управлением архивов и документации Восточно-Казахстанской области был разработан и согласован с акиматом Восточно-Казахстанской области План мероприятий по созданию информационной системы &laquo;электронные архивы Восточно-Казахстанской области&raquo; на 2007-2010 годы. Из бюджета области было выделено 54,3 млн. тенге для создания &laquo;электронного архива&raquo;.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В январе 2007 года в Государственном архиве Восточно-Казахстанской области (г.Усть-Каменогорск) и Центре документации новейшей истории области (г.Семей) созданы отделы информационных технологий.</span></p>
+<p><span style="font-size: medium; font-family: 'times new roman', times;">&nbsp;&nbsp; </span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>&nbsp;Государственный архив Восточно-Казахстанской области, г.Усть-Каменогорск</em></span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"><br /> </span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>Центр документации новейшей истории Восточно-Казахстанской области, г.Семей</em></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В основные функции отделов входит развитие и совершенствование информационных технологий для обеспечения сохранности архивных документов и их использования, создание электронного архива для обеспечения физических и юридических лиц быстрым и эффективным доступом к документам, разработка информационных систем, предназначенных для поиска, накопления, анализа, распространения, передачи информации.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Перед архивными учреждениями Восточно-Казахстанской области стоят 2 основные задачи в области информационных технологий: ввести массив имеющихся в архиве значимых документов и обеспечить возможность оперативного полнотекстового доступа к электронным документам. </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Никакая информатизация невозможна без технической инфраструктуры. В настоящее время техническое оснащение государственных архивов Восточно-Казахстанской области соответствует всем необходимым требованиям: для возможности перевода документов с бумажных носителей в электронный вид приобретены 3 цветных книжных сканера ЭЛАР ПланСкан формата А3 (1 сканер установлен в г.Усть-Каменогорске&nbsp; и 2 в г.Семее), для хранения электронных до-кументов установлены 3 сервера (2 в г.Усть-Каменогорске и 1 в г.Семей), для обеспечения совместной работы сотрудников архива над единой базой электронных документов созданы локальные вы-числительные сети (в г.Усть-Каменогорске и г.Семее),&nbsp; установлена мини АТС (в г.Усть-Каменогорске), для чтения микрофиш и микро-пленок (16/35 мм) приобретены 2 специальных аппарата Indus 4601-11, цветные планшетные сканеры формата А3 и А4, цветной сканер формата А4 со встроенным слайд-адаптером, 3 профессиональных видеокамеры, цветные лазерные принтеры, для показа мультимедийных презентаций приобретены проекторы и экраны, ноутбуки, для всех архивных учреждений приобретены компьютеры необходимой мощности, установлены антивирусные программы, все архивные учреждения подключены к сети Интернет.&nbsp; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Важнейшим этапом работ по созданию &laquo;электронного архива&raquo; является сканирование документов, их обработка и создание баз данных. Сканирование &ndash; это перевод документов с бумажной основы или с пленочных носителей в электронный вид. Обработка включает в себя повышение качества изображений (цветокоррекция, обрезка изображений, устранение перекоса..), переименование файла в соответствии с оригиналом, распознавание текста, преобразование в другие форматы. </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В читальном зале госархива области установлены 2 компьютера, на которых&nbsp; исследователи получили возможность просматривать документы в электронном виде, тем самым уменьшилось время поиска необходимых документов,&nbsp; появилась возможность распечатывать необходимые сведения, не подвергая документы постоянного хранения на бумажных носителях физическому и световому воздействию. </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Разработаны базы данных: </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Электронный фондовый каталог&raquo; - позволяет оперативно определить местонахождение фондов, номера фондов, количество описей и крайние даты документов (интегрирована с сайтом &laquo;Государственный архив ВКО&raquo;); </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Регистратор архива&raquo; - содержит полную атрибутивную информацию в виде электронной карточки и электронные образы бумажных документов со всеми пометками, подписями, резолюциями, печатями и т.п.;</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Административно-территориальное деление&raquo; - это сведения, где в хронологической последовательности отражены административно-территориальные изменения в Восточном Казахстане, прослежены изменения не только границ административно-территориальных единиц, но и все переименования, начиная с районов и заканчивая населенными пунктами (интегрирована с сайтом &laquo;Государственный архив ВКО&raquo;);<br /> &nbsp;<br /> &laquo;Книга Памяти&raquo; - это краткие биографические данные о воинах, призванных в армию из районов Восточно-Казахстанской области и погибших в боях, умерших от ранений и болезней в госпиталях, пропавших без вести в годы Великой Отечественной войны 1941-1945 гг. (интегрирована с сайтом &laquo;Государственный архив ВКО&raquo;);</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Оставь свой след в истории&raquo; - библиографические сведения о Героях Советского Союза и Героях Социалистического Труда восточноказахстанцах, о заслуженных работниках различных сфер деятельности, знаменитых людях Восточного Казахстана (интегрирована с сайтом &laquo;Государственный архив ВКО&raquo;);</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Именной каталог&raquo; - данные о номенклатурных работниках;</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Видеотека&raquo; - сведения о проведенных видео и фотосъемках с описанием и кратким содержанием отснятого материала, предусматривает возможность полноэкранного просмотра, экспорта и импорта&nbsp; видео и фото материалов; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Источники комплектования&raquo; - учет работы с организациями, учреждениями источниками комплектования; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">&laquo;Систематический каталог&raquo; - дана информация по отраслям знаний и практической деятельности общества, сведения по конкретным вопросам (история, экономика, культура, образование и т.д.).</span></p>
+<p><span style="font-size: medium; font-family: 'times new roman', times;">В ходе эксплуатации программных продуктов появилась необходимость взамен существующих БД &laquo;Электронный фондовый каталог&raquo;, &laquo;Регистратор архива&raquo;, &laquo;Источники комплектования&raquo;&nbsp; и&nbsp;&nbsp; программного комплекса &laquo;Архивный фонд&raquo; разработать автоматизированную систему управления архивами &laquo;Электронный архив ВКО&raquo;,&nbsp; которая объединит все вышеназванные базы данных и позволит в полной мере реализовать потребности архива. В проект будут добавлены такие модули как:</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">1.&nbsp;Усовершенствованный модуль разделения прав пользователей, который позволит гибко настраивать доступ различных категорий пользователей к отдельным компонентам и элементам управления программного приложения.<br /> &nbsp;<br /> 2.&nbsp;Модуль государственного учёта документов. Данный модуль позволит автоматизировать некоторые задачи по учёту документов, хранящихся в архиве, среди которых, например, построение паспорта архива.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">3.&nbsp;Модуль поиска зарегистрированных документов. Если архивные документы зарегистрированы и должным образом оформлены, то они становятся доступными для поиска. Функции поиска планируется реализовать с учётом специфичных требований, различающихся для разных групп пользователей. Например, для исследователей результаты поиска должны быть ограничены его текущей темой исследования.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">4.&nbsp;Модуль &laquo;Топографический указатель&raquo;, содержащий перечень архивных документов, сгруппированных по принципу топографического расположения. Содержимое топографического указателя может быть как обособлено от содержимого учёта документов, так и быть интегрировано с ним.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">5.&nbsp;Модуль учёта источников комплектования. Отдельный модуль, позволяющий автоматизировать процесс построения паспорта по источникам комплектования в различных разрезах.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">6.&nbsp;Модуль для ведения учёта исследователей. После регистрации исследователя в системе данный модуль позволяет автоматизировать процесс учёта и предоставления прав на просмотр как оцифрованных документов, так и документов на бумажной основе.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">7.&nbsp;Модуль доступа к зарегистрированным документам для исследователей. В силу специфики исследовательского поиска, он вынесен в отдельный модуль, который позволяет ускорить процесс предоставления исследователю нужных ему документов.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">По окончании отладки созданного проекта, планируется внедрить автоматизированную систему &laquo;Электронный архив ВКО&raquo; во всех государственных архивах районов и городов Восточно-Казахстанской области с обучением пользователей всем функциям.</span></p>
+<p><span style="font-size: medium; font-family: 'times new roman', times;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Одним из важнейших этапов создания &laquo;электронного архива ВКО&raquo; явилось создание информационного пространства государст-венного органа &ndash; Интернет-сайта, на котором гражданам, государст-венным органам, представителям бизнес структур оказываются ин-формационные услуги. С 2007 года в управлении архивов и докумен-тации ВКО действует сайт &laquo;Архивная служба Восточно-Казахстанской области&raquo;. </span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong><span style="color: #800000;">http:// arhiv.vko.gov.kz</span></strong></span></p>
+<p><span style="font-family: 'times new roman', times; font-size: medium;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Сайт отражает основные направления деятельности и развития архивной отрасли Восточного региона.&nbsp; У каждого архивного учреждения ВКО на сайте имеется собственная web-страница,&nbsp; где отражена деятельность всех структурных подразделений. Сайт разработан со всеми требованиями, предъявляемыми к сайтам государственных ор-ганов. Сайт активно действует, на него поступают положительные отклики от пользователей.&nbsp; </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">С 2009 года на сайте действует рубрика &laquo;Антикоррупционные мероприятия архивных учреждений области&raquo;, на которой освещаются все факты, обнаруженные в ходе основной деятельности архивных учреждений области. Здесь же размещены статьи по антикоррупционной тематике, опубликованные в средствах массовой информации городов и районов области. В 2010 году на сайте &laquo;Архивная служба Восточно-Казахстанской области&raquo; были созданы рубрики &laquo;1941-1945&raquo; (посвящённая 65-летию Великой Победы), &laquo;Просветительская деятельность управления&raquo;, &laquo;История миграции в Восточном Казахстане&raquo;. В ноябре 2010 года была создана рубрика &laquo;Наш Независимый Казахстан&raquo;, в ней размещаются материалы о проводимых мероприятиях, посвящённых Независимости&nbsp; Республики, а также&nbsp; статьи архивистов области, опубликованные в средствах массовой информации.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В августе 2010 года запущен сайт &laquo;Государственный архив Восточно-Казахстанской области&raquo;. </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Созданный сайт для многих исследователей может стать отправным пунктом их научных работ. Более того, ни один серьезный исследователь прошлого и настоящего Рудного Алтая не сможет обойтись без опоры на документы, находящиеся на хранении в государственном архиве Восточно-Казахстанской области. </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Документы личного происхождения в государственных архивах представляют собой одну из важнейших групп исторических источников, являются неотъемлемой частью историко-культурного наследия народа. Их значение особенно велико для изучения истории, литературы, науки, искусства. В государственном архиве Восточно-Казахстанской области насчитывается на хранении более 70 фондов личного происхождения. Раздел &laquo;Личные фонды&raquo; - это реальный путь быстрого информирования исследователей о составе, содержании документов фондов и коллекций личного происхождения.</span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong><span style="color: #800000;">http://e-arhiv.vko.gov.kz</span></strong></span></p>
+<p style="text-align: center;"><span style="color: #800000; font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">С целью привлечения общественного интереса к историко-культурному документальному наследию сотрудниками государственного архива Восточно-Казахстанской области к знаменательным датам готовятся к изданию сборники документов, публикации, фото-документальные выставки. Разделы сайта &laquo;Сборники документов&raquo;, &laquo;Публицистика&raquo;, &laquo;Выставки&raquo; - это возможность для исследователей виртуально познакомиться с содержанием сборников документов и публикаций, увидеть выставку.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В разделе &laquo;Нучно-методическая база&raquo; размещены электронные версии методических разработок, инструкций, лекций.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Государственный архив Восточно-Казахстанской области ежегодно исполняет более 12 000 запросов социально-правового характера. Главное, над чем сейчас идет работа, - предоставление услуг в электронном виде для населения и юридических лиц, важнейшей задачей является сделать услуги доступными, сократить временные и денежные затраты. Посещая сайт госархива области физические и юридические лица в рубрике &laquo;Запросы и услуги&raquo; могут оформить запрос.&nbsp;<br /> </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Вопросы информатизации архивной отрасли сейчас актуальны как никогда. Наша задача на сегодня, используя простые решения получать большие возможности. Сегодня мы выходим на новый качественный уровень, требующий от нас эффективного объединения усилий, наращивания потенциала, повышения конкурентоспособности. Это является приоритетом развития архивной отрасли Восточно-Казахстанской области. Конечная цель для нас - полный переход государственных архивов области на ведение государственного учета в автоматизированном режиме, предоставление гражданам необходимой информации в электронном виде, в том числе и в режиме удаленного доступа в сети Интернет.</span><br /><span style="font-family: 'times new roman', times; font-size: medium;"> &nbsp;</span></p>
+   &nbsp;
+</div>
+
+<script>
+	$('[data-fold-header]').click(function () {
+		var that = $(this);
+		var attr = that.attr('data-fold-header');
+		$('[data-fold-text="' + attr + '"]').each(function () {
+			var that = $(this);
+			if (that.css('display') === 'none')
+				that.css('display', 'block')
+			else
+				that.css('display', 'none')
+		})
+	});
+</script>
+
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="alternate" href="http://e-arhiv.vko.gov.kz/kk" hreflang="kk" />
+	<link rel="alternate" href="http://e-arhiv.vko.gov.kz/ru" hreflang="ru" />
+    <title>Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="/Content/css?v1.0" rel="stylesheet"/>
+
+    <link href="/Content/dropzonescss?v=_LwxzYcnE1rZO08BwoOGzDz2KH9-5gCjdgh-g5moIHU1" rel="stylesheet"/>
+
+
+    <script src="/bundles/dropzonescripts?v=sUxAkHVp92QYPFtzqFPlLpyXpRdRDSdZCcFmRP-AgXI1"></script>
+
+    <script src="/bundles/modernizr?v1.0"></script>
+
+    <script src="/bundles/jquery?v1.0"></script>
+<script src="/bundles/jqueryui?v1.0"></script>
+
+    <script src="/bundles/unobtrusive?v=jmjhTWiGrUMlGQS2hayanNTeGVZ9FC7i0HnCBpQ4IZ81"></script>
+
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        
+
+
+
+
+
+<div class="content-text">
+   <h2>Государственный архив Восточно-Казахстанской области за 20 лет Независимости Республики Казахстан (1991-2011 годы)</h2>
+   
+   <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1991 год.</strong> Распоряжением Восточно-Казахстанского облисполкома от 13 ноября&nbsp; 1991 года государственному архиву Восточно-Казахстанской области в связи с ликвидацией Коммунистической партии Казахстана передано здание партархива&nbsp; (здание по ул.Мира (ныне Головкова), 26/1) со всеми документами (свыше 200 тыс.дел) и оборудованием. Таким образом, решилась проблема со свободными площадями в архивохранилищах. </span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>Здание архива&nbsp;по ул.Головкова, 26/1</em></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">До ноября 1991 года госархив имел здание по ул.Крылова, 39, заполняемость архивохранилищ в котором составляла почти 100%. Общая площадь здания бывшего партархива составляет 1388 кв.м., площадь архивохранилищ &ndash; 518 кв.м. с вместимостью 400 тыс.дел. Началась научно-техническая обработка и прием на госхранение документов ликвидированных парторганизаций за 1988-1991 годы.</span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>Здание архива по ул.Крылова, 39</em></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Госархив области повторил издание брошюры &laquo;Штрихи к портрету города&raquo;. Архивный фонд архива составлял свыше 300 тыс.дел, штатная численность сотрудников составляла 27 человек, из них 16 специалистов.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В социальном плане в этом году были выделены сотрудникам квартира, дачные участки, участки земли под строительство гаражей. 32,9 тыс.рублей выплачено сотрудникам в качестве средств социальной защищенности в связи с повышением цен на продовольственные товары. Зарплата сотрудников составляла от 80 до 200 рублей.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1992 год.</strong> Проведен капитальный ремонт здания бывшего партархива. С 1 мая отдел на договорных началах (хозгруппа) в соответствии с решением Главы администрации Восточно-Казахстанской области от 13 июля 1992 года №87 стал содержаться за счет областного бюджета (штатная численность отдела составляла 10 человек). 1992 год внес свои коррективы в политическую и экономическую жизнь области. Постоянно повышались цены на продукты питания, товары народного потребления, коммунальные услуги и т.п. Чтобы как-то поправить материальное положение архивистов, решением Главы администрации Восточно-Казахстанской области от 27 апреля 1992 года №58 были увеличены ставки и должностные оклады архивистов с 1 мая по 31 августа. За этот период также выплачивалось ежемесячное пособие на питание. Штатная численность сотрудников архив составляла 34 человека, из них 24 специалиста.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1993 год.</strong>&nbsp; В связи с принятием Закона Республики Казахстан &laquo;О социальной защите граждан, пострадавших вследствие ядерных испытаний на Семипалатинском полигоне&raquo; от 18 декабря 1992 года в архиве проводилась работа по сбору документов от сотрудников для подтверждения фактов проживания в зонах экологического бедствия. В архиве проведен монтаж оборудования для создания микрофиш документов, оптический прибор &laquo;Старт&raquo;. Установлен компьютер ПЭВМ 286/287 с принтером, запущена информационно-поисковая программа &laquo;ДОСА&raquo; для создания систематического каталога. В связи с ликвидацией, приватизацией предприятий и организаций в архив на госхранение начал поступать большой объем документов ликвидированных предприятий (свыше 30 тыс. &ndash; 40 тыс. дел). Архивный фонд составил свыше 500 тыс. дел.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В связи с острым дефицитом наличности в области была организована продажа под зарплату продуктов, обуви и других товаров, производилась оплата коммунальных услуг перечислением. Было выделено 2 квартиры. С ноября 1993 года проведена денежная реформа. Вместо рублей появилась национальная валюта &ndash; тенге. Зарплата сотрудников архива составляла с введением тенге &ndash; 200-300 тенге.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1994 год.</strong>В связи с роспуском Советов народных депутатов всех уровней в декабре 1993 года архив занимался их упорядочением и приемом на госхранение. Продолжалась работа по переработке документов бывших партийных и комсомольских организаций.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Огромный дефицит областного бюджета, инфляция поставили в крайне тяжелое финансовое положение архивистов: так по статье 1 &laquo;Зарплата&raquo; было недофинансировано во втором полугодии 15%, а в четвертом квартале по статье &laquo;Приобретение товаров, оказание услуг&raquo; вообще не были выделены денежные средства.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Несмотря на сокращение бюджетных ассигнований в 1994 году удалось сохранить штатную численность (на тот момент она составляла 42 человека), был приложен максимум усилий, чтобы архивисты получали своевременно зарплату.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Архивный фонд архива составил свыше 600 тыс.дел.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1995 год.</strong> Финансирование проводилось только по статье 1 &laquo;Зарплата&raquo;. 1995 год &ndash; год 55-летия со дня образования государственного архива Восточно-казахстанской области. В связи с этим областная администрация подарила архиву цветной телевизор, аудио-видеомагнитофоны, была приобретена видеокамера и компьютер. Начата работа по рассекречиванию и снятию режима ограничения с документов бывшего партархива.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">С 1995 года зарплата сотрудникам выплачивалась в размере от 1000 до 2000 тенге.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1996 год</strong><strong>.</strong> В соответствии с постановлением Правительства Республики Казахстан от 9 января 1996 года &laquo;Об оплате труда работников отраслей экономики Республики Казахстан, состоящих на областном бюджете&raquo; в феврале в архивных учреждениях сокращено 15 штатных единиц. Началась работа по программе &laquo;Республиканский фондовый каталог&raquo; и созданием программ &laquo;Учет фондов&raquo;, &laquo;Источники комплектования&raquo;, &laquo;Систематический каталог&raquo;. Приобретены 4 компьютера, 3 принтера, 1 сканер, 3 ксерокса.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1997 год.</strong>Президент Республики Казахстан Н.А.Назарбаев выступил с Посланием народу Казахстана &laquo;Процветание, безопасность и улучшение благосостояния всех казахстанцев&raquo;. Это программа развития страны &laquo;Казахстан-2030&raquo;, в которой Глава государства поделился своим видением будущего нашего государства, определил стратегию дальнейшего развития Казахстана.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В связи с изменениями в административно-территориальном делении Казахстана и присоединением Семипалатинской области к Восточно-Казахстанской в мае 1997 года госархив области кроме трех филиалов (Зайсанский, зыряновский, Лениногорский) стал иметь еще 2 филиала (Аягозский и Жарминский).</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Распоряжением акима Восточно-Казахстанской области от 13 января 1997 года №1-318-р в рамках оптимизации архивного дела госархиву области с 1 марта 1997 года передан Усть-Каменогорский городской архив в составе свыше 24 тыс. дел. Было выделено здание по ул.П.Лумумбы (ул.Потанина), 12а общей площадью 1002,4 кв.м.</span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>Здание архива по ул.Потанина, 12а</em></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">После реформирования в феврале 1997 года колхозов и совхозов архив занимался упорядочением документов ликвидированных совхозов и колхозов. Осуществлял прием на госхранение документов ликвидированных малых предприятий, ТОО, кооперативов и т.п.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">1997 год был объявлен Президентом Республики Казахстан годом межнационального согласия и памяти жертв политических репрессий. Работа в области использования документов была посвящена этой теме.<br /> 1998 год. В 90-х годах вместе со становлением суверенного Казахстана происходило и становление архивного дела. Архивисты столкнулись с целым рядом неизвестных до того проблем: собственность на архивные документы; правовой статус архивов приватизируемых, обанкротившихся предприятий, взаимоотношения с частными архивами, внедрение информационных технологий в архивное дело &ndash; это далеко не полный перечень тех проблем, которые приходилось решать. Все стало на свои места с принятием в декабре 1998 года Закона Республики Казахстан &laquo;О Национальном архивном фонде и архивах&raquo;, а также с принятием ряда нормативно-правовых документов в области делопроизводства, документирования и архивного дела.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1998 год</strong> был объявлен Президентом Республики Казахстан годом народного единства и национальной истории.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>1999 год.</strong> Объявлен годом единства и преемственности поколений. Архив провел научно-практическую конференцию &laquo;Возрождение исторической памяти: научные поиски и исследования&raquo;.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2000 год.</strong> Закончена работа по рассекречиванию и снятию режима ограничений с документов парторганизаций. Этот год объявлен годом поддержки культуры. В этом году работа была посвящена также 55-летию Победы в Великой Отечественной войне 1941-1945 годы. Проведена научно-практическая конференция, посвященная 60-летию со дня образования госархива области. Начата работа по внедрению программного комплекса &laquo;Архивный фонд&raquo;, разработанного управлением обеспечения сохранности и внедрения автоматизированных технологий Федеральной архивной службы России.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2001 год.</strong>Установлена пожарно-охранная сигнализация во всех зданиях архива. Год 10-летия Независимости Республики Казахстан.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2002 год.</strong> В соответствии с Постановлением Правительства Республики Казахстан от 11 января 2002 года №41 &laquo;О системе оплаты труда работников госучреждений, не являющихся государственными служащими&raquo;, создана комиссия по исчислению стажа работы по специальностям и установлению категорий и тарифных коэффициентов для исчисления должностных окладов сотрудников.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2003 год.</strong>Установлена система газового пожаротушения в здании по ул.Головкова, 26/1. Этот год &ndash; год 5-летия принятия Закона Республики Казахстан &laquo;Национальном архивном фонде и архивах&raquo;.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В целях реализации Программы мероприятий по поиску и приобретению копий документов по истории Казахстана 15-20 веков из архивов и научных учреждений зарубежных государств, имеющих историческую и культурную ценность для Республики Казахстан, госархив области работал в Российском государственном архиве древних актов (г.Москва РФ) и Центре хранения архивного фонда Алтайского края (г.Барнаул РФ). </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2004 год.</strong> Значительно увеличивается количество поступающих обращений от физических и юридических лиц Казахстана, ближнего и дальнего зарубежья. Это обращения о подтверждении стажа работы, выплаты заработной платы, учебы, проживания в зонах экологического бедствия и т.п.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2005 год.</strong>Год 60-летия Победы в Великой Отечественной войне 1941-1945 годы, 285-летия со дня образования г.Усть-Каменогорска. Работа в области использования документов посвящена этим темам. Проведена научно-практическая конференция,&nbsp; посвященная 70-летию со дня рождения бывшего заведующего архивным отделом, краеведа, писателя Черных С.Е.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В соответствии с Посланием Президента Республики Казахстан Н.А.Назарбаева народу Казахстана от 22 февраля 2005 года &laquo;Казахстан на пути ускоренной экономической, социальной и политической модернизации&raquo; с 1 июля была увеличена заработная плата работникам бюджетной сферы на 32%, а с 2007 года на 30%.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2006 год.</strong> С целью реализации программы по историко-культурному наследию госархив занимался выявлением документов в Тобольском филиале Тюменского областного госархива (г.Тобольск РК).</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2007 год.</strong>Введена гражданская служба. Сотрудники госархива области являются гражданскими служащими.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2008 год.</strong> С этого года с целью реализации государственной программы формирования электронного правительства началась работа по созданию Электронного архива ВКО для обеспечения физических и юридических лиц быстрым и эффективным доступом к документам. Приобреталось необходимое оборудование, началось сканирование документов, дающее возможность исследователям знакомиться с документами в электронном варианте. Утвержден государственный стандарт &laquo;Выдача архивных справок&raquo;. 2008 год &ndash; год 10-летия со дня принятия Закона Республики Казахстан &laquo;О Национальном архивном фонде и архивах&raquo;. С целью реализации программы историко-культурные наследия госархив занимался выявлением документов в Томской областной библиотеке им.А.С.Пушкина (г.Томск РФ).</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В соответствии с Посланием Главы государства народу Казахстана от 7 февраля 2008 года &laquo;Рост благосостояния граждан Казахстана &ndash; главная цель государственной политики&raquo; заработная работникам бюджетной сферы повышается поэтапно: в 2009 году &ndash; на 25%, 2010 году &ndash; на 25% и в 2011 году &ndash; на 30%.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2009 год.</strong> В соответствии с постановлением Восточно-Казахстанского областного акимата от 7 мая 2009 год №65 &laquo;Некоторые вопросы государственных архивных учреждений Восточно-Казахстанской области&raquo; госархив области и филиалы стали самостоятельными юридическими лицами. Проведен ремонт в здании архива по ул.Крылова, 39.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2010 год.</strong> Год 65-летия Победы в Великой Отечественной войне 1941-1945 годы. Использование документов проводилось по данной теме. Проведена научно-практическая конференция, посвященная 70-летию со дня образования архива. </span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Создан информационный сайт &laquo;Государственный архив Восточно-Казахстанской области&raquo;. Проведен ремонт в здании архива по ул.Головкова, 26/1.</span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>2011 год.&nbsp;</strong>Год 20-летия Независимости Республики Казахстан. Подготовленная фотодокументальная выставка, посвященная этой дате, &laquo;Наш край&raquo;: хроника истории Восточно-Казахстанской области демонстрировалась во Дворце мира и согласия в г.Астане во время дней Восточного Казахстана в г.Астане. </span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Проведен ремонт в здании по ул.Потанина, 12а. </span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">В целях реализации программы историко-культурного наследия архив занимался выявлением документов в научной библиотеке Томского государственного университета (г.Томск РФ).</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Роль архивной службы сегодня &ndash; максимальное обеспечение потребностей общества в ретроспективной информации.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">За период с 1991 года по 2011 год госархивом области подготовлены и изданы: сборник документов &laquo;Рудный Алтай. 1918-1998 годы. Биография в документах&raquo;, посвященная 80-летию со дня издания газеты &laquo;Рудный Алтай&raquo;; &laquo;Под грифом секретности. Массовые откочевки казахов в Китай в период коллективизации. Реэмиграция. 1928-1957 годы&raquo;; &laquo;Научные труды Б.Г. Герасимова, священника, краеведа, ученого, члена Семипалатинского подотдела Русского географического общества&raquo;; Справочник колхозно-совхозного строительства&raquo;; путеводитель &laquo;Государственный архив Восточно-Казахстанской области и его филиалы&raquo;, путеводитель &laquo;Докмуенты бывшего архивного фонда КПСС&raquo;, путеводитель по фондам личного происхождения; сборник документов &laquo;Коллективизация сельского хозяйства в Кировском (Усть-Каменогорском) районе, сборник документов &laquo;Начало положила крепость&hellip;&raquo;; Справочник по истории административно-территориального деления Восточного Казахстана. 1920-2002 годы; брошюра &laquo;Их именами названы улицы&raquo;; сборники материалов научно-практических конференций, посвященной 70-летию со дня рождения Черных С.Е., 70-летию со дня создания госархива области; брошюры из серии &laquo;Краеведы Восточного Казахстана&raquo; о Е.П.Михаэлисе, о Н.Я.Коншине; сборники документов &laquo;Восточный Казахстан в годы Великой Отечественной войны 1941-1945 годы, &laquo;Восток благодарный вас не забудет&raquo; (о Протозанове А.К.), &laquo;Они возглавляли Восточно-Казахстанскую область (1939-2009 годы).</span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">За 20 лет госархивом области было исполнено и выдано 130360 архивных справок, а именно:<br /> 1991 год &ndash; 2599;<br /> 1992 год &ndash; 3500;<br /> 1993 год &ndash; 2960;<br /> 1994 год &ndash; 2102;<br /> 1995 год &ndash; 1995;<br /> 1996 год &ndash; 2623;<br /> 1997 год &ndash; 2113;<br /> 1998 год &ndash; 1863;<br /> 1999 год &ndash; 1854;<br /> 2000 год &ndash; 2150;<br /> 2001 год &ndash; 4500;<br /> 2002 год &ndash; 5795;<br /> 2003 год &ndash; 4662;<br /> 2004 год &ndash; 6687;<br /> 2005 год &ndash; 7300;<br /> 2006 год &ndash; 12201;<br /> 2007 год &ndash; 11312;<br /> 2008 год &ndash; 12667;<br /> 2009 год &ndash; 12649;<br /> 2010 год &ndash; 15828;<br /> 11 месяцев 2011 года &ndash; 14570.</span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;"></span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>Количество выданных справок за 20 лет с 1991г. по ноябрь 2011г.</em></span></p>
+<p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Современный архив имеет все необходимые условия для работы. Архивный фонд архива составляет около 700 тыс. дел, штатная численность &ndash; 90 человек, из них 56 человек &ndash; специалисты. Заработная плата сотрудников в среднем составляет от 40 тыс. до 60 тыс. тенге.</span></p>
+<p style="text-align: right;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>&nbsp;О.Г.Полякова</em></span></p>
+<p style="text-align: right;"><span style="font-size: medium; font-family: 'times new roman', times;"><em>2011 год, г.Усть-Каменогорск</em></span></p>
+   &nbsp;
+</div>
+
+<script>
+	$('[data-fold-header]').click(function () {
+		var that = $(this);
+		var attr = that.attr('data-fold-header');
+		$('[data-fold-text="' + attr + '"]').each(function () {
+			var that = $(this);
+			if (that.css('display') === 'none')
+				that.css('display', 'block')
+			else
+				that.css('display', 'none')
+		})
+	});
+</script>
+
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
