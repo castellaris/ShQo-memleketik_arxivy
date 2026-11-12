@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Алексей – брат титана — Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        <div class="content-text">
+                            <h2>Алексей – брат титана</h2>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">На профессиональную арену Алексей попал по рекомендации своего старшего брата Василия, увековеченного в истории цирковой борьбы под громким титулом «Непобедимый колосс Сибири».</span></p>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Алексей Георгиевич Ярков родился в 1913 году в деревне Ново-Покровка Семипалатинской области. Тогда это было большое село, раскинувшееся возле реликтового соснового бора. Многодетную семью (семеро детей) раскулачили. Было отчуждено имущество, реквизированы скот и табун лошадей. В 1929 году Ярковы вырыли землянку на окраине Семипалатинска. Старший брат Василий, с детства отличавшийся неимоверной силой, устроился ломовым извозчиком в артель «Тяжеловоз», затем этого двухметрового титана увлек за собой гастролировавший в Семипалатинске борцовский чемпионат, и богатырь навсегда остался в цирке.</span></p>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Алексей же курсировал от Усть-Каменогорска до Омска на пассажирском пароходе имени 8 февраля сначала кочегаром, затем механиком. Мы еще захватили шлепавшие по Иртышу двухэтажные колесные пароходы с названиями «Абай», «Ермак», «Роза Люксембург». А в 1933 году увлек его Василий на цирковую арену. Дебют состоялся в Петропавловске в интереснейшем по составу чемпионате. Для зрителя блистало целое созвездие: К. Буль, Ф. Лавренов, М. Боров, Хаджи Мукан, Сали Сулейман и Василий Ярков. Затем этим же составом двинулись в Пензу. И закрутилось колесо гастролей: Москва, Челябинск, Кемерово. Хотя Алексей, как и большинство борцов-профи, был крупным человеком (рост — 182 см, вес — 91 кг), но ему никак не подходила борцовская тактика таких гигантов, как М. Боров и В. Ярков. Поэтому в борьбе сделал ставку на скорость, быстроту реакции и отличную технику. Развить эти качества помог его друг и наставник, виртуоз французской борьбы феноменальный Клеменс Буль, который также не был природным тяжеловесом-богатырем. Но упорными тренировками достиг исключительного физического развития. Его любимый трюк: выходя на «бис», с разбега перепрыгивал через стол с сидящей за ним судейской коллегией. Почтеннейшая публика неистовствовала...</span></p>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Алексей Ярков перенял от Буля стремительность атак и хорошо продуманную тактику защиты. Его схватки стали интересными и содержательными. Вот отзыв прессы после гастролей в Кировском госцирке: «Выдержанный, спортивно-грамотный, обладающий хорошей техникой и рядом достигнутых побед Алексей Ракитин». (Это Буль дал ему звучный псевдоним — Ракитин, в память о своем друге).</span></p>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Чемпион мира, заслуженный мастер спорта и заслуженный тренер СССР А.Г. Мазур в книге «Борьба вчера и сегодня» свидетельствует, что Ракитин выступал весьма успешно. В 1937 году выиграл чемпионат в Калинине, победив в финале чемпиона Финляндии Хусконена. В 1939 году в Ростове стал чемпионом, победив своего учителя Буля. Тогда же на чемпионате Госцирка в Кирове призовые места поделили М. Борцов, Я. Краузе и А. Ракитин. Через год в Кирове состоялся большой чемпионат, в составе которого выступали сильные борцы: Боров, Сенаторов, Ян Цыган, Кожемяка. Ракитин снова в числе призеров.</span></p>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Война застала его в Новосибирске — был оставлен в цирке. В тылу циркачи не только укрепляли дух народа. Был отмечен почетными грамотами за шефскую помощь Красной Армии — выступления в госпиталях и перед воинскими частями. Гастроли во многих городах сопровождались рытьем противотанковых рвов. А на Дальнем Востоке борцы разгружали океанские транспорты. Выручку с чемпионата в Нижнем Тагиле полностью внесли в фонд обороны. Ян Цыган приобрел на свои средства танк и вручил его танковому экипажу. Директор цирка Вейланд Шульц сдал в фонд обороны все свои сбережения и спортивные награды. На эти средства был приобретен танк и отправлен на фронт. На средства цирковых артистов была построена танковая колонна «Советский цирк». Хаджи Мукан, невзирая на возраст (в 1941 году ему исполнилось 70 лет), вновь выступает с силовыми номерами, даже в самых отдаленных аулах демонстрирует несокрушимую силу батыра. На его гонорары построен самолет, на котором взмыл в грозовое небо беркут Казахстана — семипалатинец К. Шалабаев. Мунайтпасову пришла благодарственная телеграмма от И. Сталина.</span></p>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">А после войны — новый расцвет цирковой борьбы, вновь пестрая карусель гастролей от Южно-Сахалинска до Таллина. В то время с цирковой борьбой был связан целый пласт жизни, она имела огромную популярность в народе. В 1959 году в Магнитогорске вновь призовые места делят братья Ярковы. Алексей Георгиевич был руководителем последнего циркового чемпионата в системе Госцирка. Даже на пенсии не забросил борьбы, много работал с молодыми спортсменами, возглавлял судейство областных и республиканских соревнований.</span></p>
+                            <p style="text-align: justify;"><span style="font-size: medium; font-family: 'times new roman', times;">Сын его, окончив консерваторию, работал в симфоническом оркестре, дочь окончила Уральский политехнический институт.</span></p>
+                            <p style="text-align: justify;"><em><span style="font-size: medium; font-family: 'times new roman', times;">Из книги В.Ф. Подрезова «Восток – поэзия силы», Усть-Каменогорск, «ЛИБРИУС», 2010</span></em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

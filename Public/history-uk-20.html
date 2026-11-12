@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        
+
+
+
+
+
+<div class="content-text">
+   <h2>&#171;УСТЬ-КАМЕНОГОРСКАЯ ЖИЗНЬ&#187; в 1918 году…</h2>
+   
+   <p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">В областном государственном архиве сохранилась подшивка одной из первых в Усть-Каменогорске газет &mdash; &laquo;Усть-Каменогорская жизнь&raquo;. Газета насыщена материалами о политике. Это и понятно &mdash; время переломное. Сегодня нас интересует бытовая сторона, уклад жизни старого города... Полистаем старые страницы &laquo;Усть-Каменогорской жизни&raquo;.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">3 июня 1918 г.<br />
+Приказ № 4.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Военного Комиссара Временного Сибирского Правительства по г.Усть-Каменогорску и его уезду.<br />
+&sect;&nbsp; 1. Разрешаю в городе издание газеты.<br />
+&sect; 4. Никаких незаконных действий по отношению семейств задержанных большевиков не допускать&hellip;<br />
+&sect; 7. Предоставленной мне властью для удобства и блага местного населения объявляю торговлю свободной. К вам, торговые люди, обращаюсь я с горячим призывом помочь населению в его нуждах, найти способы и возможность удовлетворить потребность покупателей, удешевить цены и обеспечить нуждающихся мануфактурой и другими предметами первой необходимости...<br />
+Войсковой старшина<br />
+Виноградский.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">5 июня. <br />
+Хроника.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Помещая&nbsp; в этом&nbsp;&nbsp; номере обращение Городской Управы к гражданам Усть-Каменогорска о принятии участия в предстоящих выборах гласных во вторую от революции Гор. Думу редакция выражает уверенность, что наши сограждане не останутся глухи к этим призывам, стряхнут с себя извечную русскую халатность, присущую нашему народу в делах общественного значения...</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Объявления.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Потерялась породистая серая гончая. Указавшем, где таковая находится, будет дано вознаграждение. Взявший собаку будет преследоваться законом.<br />
+Найдена записная книжка с документами за подписью Доминик Добржанский, Адрес...</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">6 июня.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Городская управа приглашает всех лиц, у кого был реквизирован какой-либо товар, явиться в здание управы с распиской, удостоверяющей род реквизированного товара и его количество. В том случае, если товар окажется распроданным, будут возвращены деньги.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">&laquo;Народное пароходство&raquo;.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Как известно, Советская власть Семипалатинской области национализировала частные пароходы. Пустила их в нынешнюю навигацию по Иртышу под именем &laquo;народных&raquo;. Прежде всего большевики поназначали пароходским служащим высокие оклады жалованья. Производительность труда страшно понизилась. Вместе с тем, повысилась небрежность рабочих команд. Дисциплина упала... Сгорел прекрасный пароход &laquo;Алтай&raquo;. Пожар на пароходе можно было затушить, но матросы первыми выскочили на берег со своими пожитками, опережая пассажиров и философски резюмировали свое впечатление:<br />
+&mdash; Пущай, матушка, горит &mdash; буржуйский пароход...</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Хроника.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Первого июня с.г. в Усть-Каменогорск доставлено 10 красногвардейцев, арестованных в Сулусаринской волости. Арест их произведен при следующих обстоятельствах.</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">Советская власть командировала за четыре дня до ее свержения в степь отряд красногвардейцев для &laquo;сбора пожертвований&raquo; в свою пользу, конечно. Отряд был вооружен винтовками. До прибытия в аул они уже успели собрать порядочный капитал. Объявили старшине, что за этим аулом значится такая-то сумма за &laquo;некогда&raquo; украденных у крестьян лошадей. И предложили рассчитаться добром, в противном случае будет применена сила. Из беды выручил русский человек, который посоветовал старшине угостить гостей чаем и заколоть для большей убедительности барашка. Так и было сделано. В то же время старшина дал знак в соседний аул, прося помощи... Киргизы быстро собрались, окружив дом, в котором расположились красногвардейцы в предвкушения соблазнительного фриштика, сложив в кучу свое оружие. Киргизы ворвались в дом, быстро захватили винтовки, а самих воинов перевязали по паре и в каком виде доставили сюда под сильным конвоем.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Объявления.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Ищу место по письменной части...</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">9 нюня.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Городской сад.&nbsp;&nbsp; Воскресенье 10 и понедельник 11 июня. Два больших гулянья. Во время гулянья танцы и бенгальский огонь.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Объявления.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Продается новый ходок. Телеграфная ул., д. Федяева.<br />
+Продается паровой утюг... </span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">10 июня.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Городской сад. Два больших гулянья. Сад будет освещен. Начало с 5 час. вечера.<br />
+</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">22 июня на Соборной площади был отслужен торжественный молебен. Скромно и сердечно проводили устькаменогорцы отряд бойцов за освобождение истерзанной Родины. Радостно было смотреть на бодрые молодые лица офицеров и казаков, и, казалось, вновь воскресла мощь русской армии.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">14 августа.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Граждане! Городу Усть-Каменогорску и его уезду грозит опасность: в Змеиногорском уезде появилось заболевание холерой. Болезнь чрезвычайно заразительная и почти всегда смертельная. Уберечься от нее можно, если соблюдать следующие меры:<br />
+1. Не пить сырую воду. 2. Не есть сырых овощей. 3. Не пить спиртные напитки. 4. Не объедаться...<br />
+Врачи&nbsp; г.&nbsp; Усть-Каменогорска.<br />
+19 августа в Народном доме шел боевик сезона &laquo;Великий шмуль&raquo;.</span></span></p>
+<p style="text-align: center"><span style="font-size: medium"><span style="font-family: Times New Roman"></span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Объявление.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">Девушка, приезжая, хорошо грамотная, ищет место горничной. Сильно нуждаюсь.</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">Подошвы американские имеются в продаже у Николая Курочкина. Дом Каримова.</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">25 сентября в электро-театре &laquo;Модерн&raquo; только один день шла выдающаяся картина, сильная драма, &laquo;Маруся отравилась&raquo;.</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">В Народном доме при участии петроградских артистов состоялся спектакль, оригинальный скетч в двух частях &mdash; &laquo;Бедный Федя&raquo;.</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">Новейший тип величайшего морского аэроплана является американским изобретением. Аэроплан этот побил мировой рекорд, совершив полет с 50 пассажирами со скоростью 80 миль в час.</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">15 декабря около 6 час. вечера начальником милиции на крыльце Народного дома был задержан и обезоружен пьяный всадник, желавший въехать в Народный дом на лошади. На требование начальника милиции предъявить удостоверение личности, всадник вынул револьвер из кармана и сказал:<br />
+&mdash; Вот мой документ, я партизан и могу въехать куда захочу.<br />
+Из отобранного у него удостоверения выяснилось, что он не партизан, а писарь Ворогушин.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Хроника.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">По 5-ой улице на углу постоялого двора Мошонкина сломался мостик, проходя через который одна барышня провалилась и зашибла ногу.<br />
+В палисадник Постникова подкинут младенец, мальчик, трех месяцев, еще не крещеный.</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Хроника.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">В городе циркулируют довольно неопределенные, но настойчивые слухи по поводу какого-то пикника (на семи тройках).<br />
+</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">Правда ли, что в этом пикнике принимали участие учительницы и ученицы? Правда ли, что кавалеры &laquo;зело упихуся&raquo; начали не совсем прилично вести себя в отношении дам, так что благоразумный элемент вынужден был ретироваться с дамами, гарантируя их от приставаний?<br />
+Правда ли, что в итоге оказались побиты музыканты и пострадала часть инструментов?</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">Правда ли, что устроителем грандиозного пикника является &laquo;МЯСООТДЕЛ&raquo;?</span></span></p>
+<p style="text-align: justify"><strong><span style="font-size: medium"><span style="font-family: Times New Roman">Объявления.<br />
+</span></span></strong><span style="font-size: medium"><span style="font-family: Times New Roman">УТЕРЯН калош с левой ноги по Никольской ул. Нашедшего прошу доставить за вознаграждение Заставину.<br />
+</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">ТЫСЯЧУ рублей тому, кто первым правдоподобно заявит мне, куда, через кого и где продала или хранит жена моя Екатерина Яковлевна Васильева, живущая ныне в семье Ильи Панченко, по подозрению похищенную ею мою пушнину: 25 лисиц, 1600 белок, 248 колонков...<br />
+</span></span></p>
+<p style="text-align: justify"><span style="font-size: medium"><span style="font-family: Times New Roman">23 февраля в электро-театре &laquo;МОДЕРН&raquo; шля выдающаяся картина &laquo;Женщина зверь кровожадный&raquo;. В антрактах играл оркестр.</span></span></p>
+<p style="text-align: right"><em><span style="font-size: medium"><span style="font-family: Times New Roman">Подготовил к публикации Андрей КРАТЕНКО</span></span></em></p>
+<p style="text-align: right"><em><span style="font-size: medium"><span style="font-family: Times New Roman">&laquo;Рудный Алтай&raquo;, 30 сентября 1995 г.</span></span></em></p>
+   &nbsp;
+</div>
+
+<script>
+	$('[data-fold-header]').click(function () {
+		var that = $(this);
+		var attr = that.attr('data-fold-header');
+		$('[data-fold-text="' + attr + '"]').each(function () {
+			var that = $(this);
+			if (that.css('display') === 'none')
+				that.css('display', 'block')
+			else
+				that.css('display', 'none')
+		})
+	});
+</script>
+
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

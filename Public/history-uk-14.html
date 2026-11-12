@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        
+
+
+
+
+
+<div class="content-text">
+   <h2>Воспоминания П.Ф.Столбова</h2>
+   
+   <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">До революции городское общественное управление состояло из городской думы (собрание уполномоченных) &ndash; законодательный орган и городская Управа&nbsp; - исполнительный орган (как у нас сейчас Горсовет и Горисполком).</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В течение десяти лет, с 1895 по 1905 годы, в состав гласных думы (уполномоченных) были избраны бывшие политические ссыльные: Е.П. Михаэлис, Н.А. Федоров, Емельянцев, Россов, О.Ф. Костюрин и др. Городским старостой в течение всего этого срока был Орест Федорович Костюрин.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">На вопрос, что вы знаете о Костюрене? Он, П.Ф.Столбов, сказал: &laquo;Мне с ним приходилось много лет работать вместе в городской управе, и я знаю многое из его жизни. У него был брат, которого царское правительство за революционную деятельность приговорило к 10 годам каторги. Когда он отбыл свой срок, то поселился на жительство в Тобольске. Костюрин О.Ф. тоже за участие в революционных кружках был сослан в Усть-Каменогорск. Здесь он поступил молотобойцем к 115-летнему кузнецу Мушкину. Потом открыл свою кузницу: позднее построил двухэтажную мастерскую (против кино &laquo;Октябрь&raquo;), позади её чугунолитейную и склады.</span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;">Костюринские мастерские</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Кино &laquo;Октябрь&raquo;, тоже построено им для сына, который учился в Германии. Называлось оно тогда &laquo;Эхо&raquo;. Но через некоторое время, видимо, имея какие-то финансовые трудности, он кино &laquo;Эхо&raquo; продал.</span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;">Кинотеатр "Эхо"</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Гласные думы, бывшие политические ссыльные, во главе с Костюриным, сделали очень много для благоустройства и культурного развития города Усть-Каменогорска.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В&nbsp; 1897 году была открыта бесплатная городская библиотека &ndash; читальня с зачатками музея. Он (Пётр Филлипович Столбов) выполнял в порядке общественной нагрузки&nbsp; обязанности первого библиотекаря. Городское управление имело незначительный бюджет и не могло выделить большие средства на содержание библиотеки. Но за то передовые образованные жители города очень отзывчиво отнеслись к делу создания библиотеки, они пришли на помощь ей, путем внесения денежных средств и книг. Так, бывший&nbsp; врач А. Вестениус продал выращенный им ещё в восьмидесятых годах фруктовый сад, известному в городе садоводу Д.Г. Панкратьеву за 1500 рублей с рассрочкой на 15 лет с тем, чтобы плата вносилась в пользу городской библиотеки, что Д.Г. Панкратьев точно и выполнял.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 1897 году было построено хорошее здание для приходской начальной школы. Общественность города, в основном интеллигенция, принимала также участие в строительстве &laquo;Народного дома&raquo; (здание, где сейчас областной драматический&nbsp; театр). </span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;">Народный дом</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Он был построен в 1901-1902 годах. Вся постройка обошлась в 17,5 тысяч рублей, из них 10 тысяч&nbsp; вложило городское управление, а 7,5 тысяч были собраны путём пожертвований, сборы от устройства спектаклей и концертов. Костюрин всю зарплату городского старосты за 1901/02 годы отдал на строительство &laquo;Народного дома&raquo;. Все кузнечные работы по строительству &laquo;Народного дома&raquo; выполнялись в его мастерской бесплатно. </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 1900 году на месте сгоревшего городского училища (потом клуба) было построено каменное здание Мариинского училища (прогимназии).<br /> </span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;">Мариинское училище</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 1901 году, когда шло строительство Народного дома, в Усть- Каменогорск приехал генерал-губернатор Степного края Шмидт. Он осмотрел постройку, а потом отозвал в сторону Костюрина и заявил ему: &laquo;У меня имеется много жалоб. Говорят, Вы здесь строите здание, как Лондонский парламент&raquo;.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Первая пьеса, которую поставили любители на сцене отстроенного На-родного дома называлась &laquo;Рабочая слободка&raquo;. Вскоре после её постановки главные участники спектакля - учительница, врач и казачий офицер были переведены из Усть-Каменогорска. Содержание пьесы не понравилось реакционно настроенным властям города.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 1905 году Костюрин О.Ф. проводил митинги. Играет оркестр. Собирается на площади около Народного дома народ. Костюрин залез на извозчищью пролётку и начал говорить речь. Он говорил о том, к чему стремятся русские люди, добиваясь свободы.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">После 1905 года бывшие ссыльные уже не могли быть избраны гласными думы, во-первых, потому, что повысился имущественный ценз до 300 руб., вместо 100, во-вторых, власти боялись оставить их в управлении города в годы начавшейся революции.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Состав думы стал купеческой. Городским главой стал купец Михайлов, купец Подойников.&nbsp; Однако влияние политических ссыльных, благодаря их огромному авторитету среди населения, продолжало сказываться&nbsp;&nbsp; на городских делах. В 1912 году было построено двухэтажное каменное здание для начальной школы. Они предлагали план всеобщего бесплатного начального обучения всех детей жителей города. Они ставили вопрос о том, чтобы горы, прилегающие к городу, засадить деревьями, озеленить их.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">На вопрос, когда были открыты в Усть-Каменогорске средние учебные заведения, П.Ф. Столбов рассказал, что горожане очень долго хлопотали, чтобы им разрешили открыть женскую гимназию. Наконец, такое разреше-ние было дано. В 1913-1914 годах купили дом, потом его распилили и по на-меченному проекту построили помещение для гимназии. В 1916 году открыли реальное училище. Здание для Высшего начального училища было построено ещё в 1886 году. Кроме того, П.Ф. сообщил, что до революции в Усть-Каменогорске было два кино &laquo;Эхо&raquo; (сейчас &laquo;Октябрь&raquo;) и &laquo;Модерн&raquo;. Дом, где сейчас Облисполком, принадлежал купцу Курочкину, который потом погорел. Дом, где Горсовет, принадлежал золотопромышленнику Касаткину Ивану Илларионовичу (почётный смотритель городского училища). Он был зятем томского купца Михайлова. Где ресторан, там был магазин Серова. Во время войны была организована земская управа, председателем которой был&nbsp; врач Айтбакин, по национальности казах. </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>Беседу записал ст.преподаватель Усть-Каменогорского пединститута С.Герасимов&nbsp; </em></span></p>
+   &nbsp;
+</div>
+
+<script>
+	$('[data-fold-header]').click(function () {
+		var that = $(this);
+		var attr = that.attr('data-fold-header');
+		$('[data-fold-text="' + attr + '"]').each(function () {
+			var that = $(this);
+			if (that.css('display') === 'none')
+				that.css('display', 'block')
+			else
+				that.css('display', 'none')
+		})
+	});
+</script>
+
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

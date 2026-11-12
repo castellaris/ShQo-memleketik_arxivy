@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Глоссарий — Государственный архив ВКО</title>
+    <!-- Подключение Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label"></div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Панель доступности -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box" style="margin-top: -7px;">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    
+                    <!-- Выпадающий список филиалов -->
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Интегрированный блок панелей -->
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="branch-ustk.html" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <div id="main-content">
+                    <div>
+                        <div class="content-text">
+                            <h2>Глоссарий</h2>
+                            <p data-i18n="glossary-desc">Словарь специальных архивных терминов, определений и понятий, используемых в сфере архивного дела и документооборота.</p>
+
+                            <table class="table table-bordered table-striped align-middle" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 25%;"><strong>Архив</strong></td>
+                                        <td>совокупность архивных документов, а также архивное учреждение или структурное подразделение учреждения, организации или предприятия, осуществляющее прием и хранение архивных документов в интересах пользователей[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивный документ</strong></td>
+                                        <td>документ, сохраняемый или подлежащий сохранению в силу его значимости для общества, а равно имеющий ценность для собственника[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивная опись</strong></td>
+                                        <td>архивный справочник, содержащий систематизированный перечень единиц хранения архивного фонда, коллекции и предназначенный для их учета и раскрытия их содержания[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивные фонды</strong></td>
+                                        <td>совокупность документов, исторически или логически связанных между собой[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивный каталог</strong></td>
+                                        <td>архивный справочник, в котором информация об архивных документах расположена в соответствии с выбранной схемой классификации[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивный указатель</strong></td>
+                                        <td>архивный справочник, содержащий систематизированный перечень наименований предметов или объектов, о которых содержатся сведения в архивных документах, с указанием их поисковых данных[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивная коллекция</strong></td>
+                                        <td>совокупность документов, образовавшихся в деятельности фондообразователей и объединенных по одному или несколькими признаками[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивный справочник</strong></td>
+                                        <td>справочник, предназначенный для поиска информации об архивных фондах и (или) архивных документах[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивное дело</strong></td>
+                                        <td>сфера деятельности физических и юридических лиц, связанная с формированием Национального архивного фонда, образованием архивов, архивных фондов и коллекций, организацией их хранения и использования[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивная справка</strong></td>
+                                        <td>официальный документ, имеющий юридическую силу и содержащий информацию о предмете запроса, поисковых данных документов[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивная копия</strong></td>
+                                        <td>официальный документ архива, воспроизводящий текст или изображение архивного документа с указанием его поисковых данных[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Архивохранилище</strong></td>
+                                        <td>специально оборудованное помещение для хранения архивных документов[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Аудиовизуальный документ</strong></td>
+                                        <td>документ, содержащий изобразительную и звуковую информацию[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ведомственный архив</strong></td>
+                                        <td>учреждение или структурное подразделение государственного юридического лица, осуществляющее собирание, временное хранение и использование документов Национального архивного фонда, а также документов, не вошедших в его состав[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Государственный архив</strong></td>
+                                        <td>государственное учреждение, наделенное правом собирания (приобретения), постоянного хранения и организации использования документов Национального архивного фонда[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Государственный страховой фонд копий документов</strong></td>
+                                        <td>совокупность страховых копий документов Национального архивного фонда, имеющих для государства непреходящее значение и незаменимых при их утрате[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Дело</strong></td>
+                                        <td>совокупность документов или документ, относящиеся к одному вопросу или участку деятельности, помещенный в отдельную обложку[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Делопроизводство</strong></td>
+                                        <td>сфера деятельности юридических лиц, обеспечивающая документрование и организацию работы с документами[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Документ</strong></td>
+                                        <td>зафиксированная на материальном носителе информация, позволяющая ее идентифицировать[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Документ личного происхождения</strong></td>
+                                        <td>документ, созданный лицом вне сферы его служебной деятельности или выполнения общественных обязанностей[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Документы по личному составу</strong></td>
+                                        <td>комплекс документов, подтверждающих трудовую деятельность работников и сведения об отчислении денег на их пенсионное обеспечение[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Документооборот</strong></td>
+                                        <td>движение документов в организации с момента их создания или получения до завершения исполнения или отправления[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Единица хранения</strong></td>
+                                        <td>учетная или классификационная единица, представляющая собой физически обособленный документ или совокупность документов, имеющих самостоятельное значение[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Единица учета</strong></td>
+                                        <td>единица измерения количества документов в архиве[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Использование архивных документов</strong></td>
+                                        <td>применение информации архивных документов в культурных, научных, политических, экономических целях и для обеспечения законных прав и интересов граждан[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Источник комплектования</strong></td>
+                                        <td>юридическое или физическое лицо, чьи документы поступают на государственное хранение в архив[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Историческая справка к архивному фонду</strong></td>
+                                        <td>документ, содержащий сведения по истории фондообразователя и архивного фонда, краткую характеристику состава и содержания его документов и научно-справочного аппарата[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Кинодокумент</strong></td>
+                                        <td>изобразительный документ, содержащий изобразительную или аудиовизуальную информацию, зафиксированную кинематографическим способом[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Комплектование архива</strong></td>
+                                        <td>систематическое пополнение архива документами в соответствии с его профилем и законодательством Республики Казахстан[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Межархивный справочник</strong></td>
+                                        <td>архивный справочник, содержащий сведения о документах двух или более архивов[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Национальный архивный фонд</strong></td>
+                                        <td>совокупность всех архивов, архивных фондов и коллекций, документальных памятников, документов, имеющих особое историческое, научное, социальное, экономическое, политическое или культурное значение, признанных в установленном законом порядке национальной ценностью[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Номенклатура дел</strong></td>
+                                        <td>систематизированный перечень наименований дел, заводимых в организации, с указанием сроков их хранения, оформленный в установленном порядке[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Обеспечение сохранности документов</strong></td>
+                                        <td>обеспечение физико-химической сохранности документов и их учет[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Объединенный архивный фонд</strong></td>
+                                        <td>архивный фонд, сформированный из документов двух или более фондообразователей, имеющих между собой исторически обусловленные связи[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Организационно-распорядительный документ</strong></td>
+                                        <td>вид письменного документа, в котором фиксируют решение административных и организационных вопросов, а также вопросов управления, взаимодействия, обеспечения и регулирования деятельности органов власти, учреждений, предприятий, организаций, их подразделений и должностных лиц[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Особо ценный документ</strong></td>
+                                        <td>документ, отнесенный к составу Национального архивного фонда Республики Казахстан и незаменимый при утрате или повреждении[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Официальный документ</strong></td>
+                                        <td>документ, созданный физическим и юридическим лицом, оформленный и удостоверенный в установленном порядке[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Перечень документов со сроками хранения</strong></td>
+                                        <td>систематизированный список видов и категорий документов, содержащий нормативные указания о сроках их хранения[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Пользователь архивных документов</strong></td>
+                                        <td>физическое или юридическое лицо, обращающееся к архивным документам для получения информации с целью её использования[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Реквизит документа</strong></td>
+                                        <td>обязательный элемент оформления официального документа[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Специальный государственный архив</strong></td>
+                                        <td>архивное учреждение или подразделение специального государственного органа Республики Казахстан[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Страховая копия</strong></td>
+                                        <td>копия особо ценного документа, изготовленная в целях хранения содержащейся в нем информации на случай утраты или повреждения оригинала[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Уполномоченный орган</strong></td>
+                                        <td>Центральный государственный орган управления архивами и документацией[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Учет архивных документов</strong></td>
+                                        <td>установление количества и состава архивных документов в единицах учета и фиксация принадлежности каждой единицы учета к определенному комплексу и общему их количеству в учетных документах[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Фонд пользования</strong></td>
+                                        <td>совокупность копий архивных документов, предназначенных для пользования вместо оригиналов с целью предотвращения их износа[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Фондообразователь</strong></td>
+                                        <td>юридическое или физическое лицо, в деятельности которого образуется документальный фонд[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Фондирование документов</strong></td>
+                                        <td>распределение документов по архивным фондам и архивным коллекциям[cite: 13]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Фонодокумент</strong></td>
+                                        <td>документ, содержащий звуковую информацию, зафиксированную любой системой звукозаписи[cite: 13]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="accessibility.html" data-i18n="right-accessibility">Система чтения с экрана для слабовидящих</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+                <br />
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

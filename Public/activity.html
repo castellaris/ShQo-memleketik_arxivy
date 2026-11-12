@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Деятельность архива — Государственный архив ВКО</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Выдвижной опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label"></div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Панель доступности -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box" style="margin-top: -7px;">
+                    <div><h2>Государственный архив ВКО</h2></div>
+                    
+                    <!-- Выпадающий список филиалов -->
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Интегрированный блок панелей -->
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="branch-ustk.html" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <div id="main-content">
+                    <div>
+                        <div class="content-text">
+                            <h2>Деятельность архива</h2>
+                            <p style="text-align: left;"><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><strong style="font-family: 'times new roman', times; text-align: left;">ОСНОВНЫЕ ПОКАЗАТЕЛИ</strong></span></p>
+                            <table style="height: 995px; width: 646px;" border="1" cellspacing="3">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2026 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em><a href="/api/download/plan_2026">План работы госархива ВКО и его филиалов на 2026 год</a></em></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2025 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em><a href="/api/download/plan_2025">План работы госархива ВКО и его филиалов на 2025 год</a></em></span></p>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;"><a href="/api/download/report_2025">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления цифровизации и архивов Восточно-Казахстанской области за 2025 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2024 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em><a href="/api/download/plan_2024">План работы госархива ВКО и его филиалов на 2024 год</a></em></span></p>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><a href="/api/download/report_2024">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления цифровизации и архивов Восточно-Казахстанской области за 2024 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2023 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em style="font-family: 'times new roman', times;"><a href="/api/download/plan_2023">План работы госархива ВКО и его филиалов на 2023 год</a></em></span></p>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><a href="/api/download/report_2023">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления цифровизации и архивов Восточно-Казахстанской области за 2023 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2022 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em><a href="/api/download/plan_2022">План работы госархива ВКО и его филиалов на 2022 год</a></em></span></p>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><a href="/api/download/report_2022">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления цифровизации и архивов Восточно-Казахстанской области за 2022 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2021 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em><a href="/api/download/plan_2021"><span data-mce-mark="1">План работы госархива ВКО и его филиалов на 2021 год</span></a></em></span></p>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><a href="/api/download/report_2021">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления цифровизации и архивов Восточно-Казахстанской области <em style="font-family: 'times new roman', times;"><span data-mce-mark="1">за </span></em><span data-mce-mark="1">2021 год</span></a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2020 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em><a href="/api/download/plan_2020"><span data-mce-mark="1">План работы госархива ВКО и его филиалов на 2020 год</span></a></em></span></p>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><a href="/api/download/report_2020">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2020 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;">
+                                            <table style="height: 58px; width: 99px;" dir="ltr" cellspacing="1" cellpadding="1" align="center">
+                                                <tbody><tr><td><p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2019 год</em></strong></span></p></td></tr></tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p><span style="font-size: medium; font-family: 'times new roman', times;" data-mce-mark="1"><em><a href="/api/download/plan_2019"><span data-mce-mark="1">План работы госархива ВКО и его филиалов на 2019 год</span></a></em></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2019">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2019 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2018 год</em></strong></span></td>
+                                        <td>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/plan_2018"><span data-mce-mark="1"><em>План работы госархива ВКО и его филиалов на 2018 год</em></span></a></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2018">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2018 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2017 год</em></strong></span></td>
+                                        <td>
+                                            <p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><em><a href="/api/download/plan_2017"><span data-mce-mark="1">План работы госархива ВКО и его филиалов на 2017г</span></a></em></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2017">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2017 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2016 год</em></strong></span></td>
+                                        <td>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/plan_2016"><em>План работы госархива ВКО и его филиалов на 2016г.</em></a></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2016"><span data-mce-mark="1">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2016 год</span></a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2015 год</em></strong></span></td>
+                                        <td>
+                                            <p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><em><a href="/api/download/plan_2015">План работы госархива ВКО и его филиалов на 2015г.</a></em></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2015"><span data-mce-mark="1">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2015 год</span></a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2014 год</em></strong></span></td>
+                                        <td>
+                                            <p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/plan_2014"><em>План работы госархива ВКО и его филиалов на 2014г.</em></a></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2014">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2014 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2013 год</em></strong></span></td>
+                                        <td>
+                                            <p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><em><a href="/api/download/plan_2013">План работы госархива ВКО на 2013г.</a></em></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2013">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления культуры, архивов и документации Восточно-Казахстанской области и его филиалов за 2013 год</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2012 год</em></strong></span></td>
+                                        <td>
+                                            <p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><em><a href="/api/download/plan_2012">План работы госархива ВКО на 2012г.</a></em></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2012">Отчет о выполнении показателей работы КГУ &laquo;Государственный архив&raquo; управления архивов и документации Восточно-Казахстанской области за 2012г.</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><em><strong>2011 год</strong></em></span></td>
+                                        <td>
+                                            <p><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><em><a href="/api/download/plan_2011">План работы госархива ВКО на 2011г.</a></em></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2011">Отчет о выполнении основных показателей работы государственного архива Восточно-Казахстанской области за 2011г.</a></span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><strong><em>2010 год</em></strong></span></td>
+                                        <td>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><em><a href="/api/download/plan_2010">План работы госархива ВКО на 2010г.</a></em></span></p>
+                                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;" data-mce-mark="1"><a href="/api/download/report_2010">Отчет о выполнении основных показателей работы за 2010г.</a></span></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+                <br />
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

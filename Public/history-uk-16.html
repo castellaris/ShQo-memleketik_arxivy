@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        
+
+
+
+
+
+<div class="content-text">
+   <h2>Народный дом</h2>
+   
+   <p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">В УСТЬ-КАМЕНОГОРСКЕ есть здание, с которым связаны многие страницы истории края. Находится оно в парке имени Кирова, и трудится в&nbsp; нем&nbsp; сейчас коллектив областного драматического театра. Этому зданию 65 лет. Здесь 26 октября 1902 года состоялось торжественное событие - открытие Народного дома.</span></span></p>
+<p style="text-align: center;"><span style="font-size: medium;"><span style="font-family: Times New Roman;"></span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">Его цель и задачи, согласно разработанному уставу, заключались в том, чтобы &laquo;дать возможность населению проводить свободное от занятий время с удобством, приятностью и пользою&raquo;. С этой целью, гласит один из пунктов устава, комитету Народного дома предоставляется устраивать танцевальные вечера, маскарады, музыкальные и литературные вечера, спектакли и тому подобные развлечения, как-то: игры в шашки, шахматы и на бильярде, выписывать книги, газеты, периодические издания, а также приглашать специалистов по разным наукам для чтения лекций, которые служили бы к распространению в населении полезных сведений. В Народном доме должны быть библиотека и читальня, музей...&raquo;</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">При Народном доме был создан самодеятельный драматический кружок. Его первой работой явилась пьеса&nbsp;&nbsp; &laquo;Рабочая слободка&raquo;. Участники спектакля за это подверглись полицейскому&nbsp; преследованию,&nbsp;&nbsp;&nbsp; их выслали&nbsp; из Усть-Каменогорска под благовидным предлогом - переводом на работу в другие города.&nbsp; В&nbsp; одном&nbsp; из&nbsp; маскарадов, как вспоминает старожил города П.Ф.Столбов, была выставлена маска, изображающая Народный дом с надписью: &laquo;Здесь живут рыцари без страха и упрека&raquo;.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">А вот архивные документы рассказывают целую историю с&nbsp;театральным занавесом. В 1905 году в период первой русской революции в Народном доме появился занавес с надписью: &laquo;Ура! Да здравствует свобода!&raquo; Уездный начальник потребовал снять этот занавес, но его требование долго не выполнялось. Когда же оно все-таки было выполнено, вместо прежнего занавеса появился новый со следующим текстом: &laquo;Даровать населению незыблемые основы гражданской свободы на началах действительной неприкосновенности личности, свободы совести, слова, собраний и союзов. Установить как незыблемое правило, чтобы выборным от народа обеспечена была возможность действительного участия в надзоре за законностью действий поставленных от нас властей&raquo;. Но и этот занавес, по мнению губернатора Семипалатинской области, имел &laquo;явно тенденциозный характер, направленный к восстановлению публики против местных... властей&raquo;.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">В 1909 году в Усть-Каменогорск приезжает &laquo;высокий&raquo; гость - генерал-губернатор Степного края. В Народном доме ведется деятельная под-готовка к его встрече. Местными властями было решено закрыть хоры (из-за предосторожности, так как &laquo;в городе, помимо собственных революционеров, проживало много высланных из Томской губернии&raquo;, и приходилось &laquo;заботиться об охране особы генерал-губернатора&raquo;), убрать занавес с тенденциозным текстом. Каково же было возмущение важного сановника, когда, явившись в Народный дом за несколько минут до приезда генерал-губернатора, он увидел, что занавес опущен, хоры открыты и на них толпится совершенно посторонняя публика.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">Вскоре прибыл и генерал-губернатор. Он нашел занавес совершенно неподходящим для театрального зала, приказал его убрать и больше не вывешивать. Рассерженный губернатор области отдал, в свою очередь, приказание сжечь этот злополучный занавес. И вот 4 июля 1909 года уездный начальник Казанцев спешит уведомить губернатора о том, что городским приставом уже составлен акт об уничтожении им театрального занавеса Усть-Каменогорского Народного дома. О принятых мерах губернатор не замедлил сообщить в департамент полиции с подробным описанием всего вышеизложенного. Кстати сказать, в своем письме он жалуется, что &laquo;город Усть-Каменогорск по своему революционному настроению доставляет наибольше хлопот&raquo;, что бывшие политические ссыльные Орест Костюрин, Емельянцев&nbsp; и другие &laquo;сумели оказать гро-мадное влияние на местное население&raquo;, что они обращают &laquo;особое внимание на воспитание юношества в революционном духе&raquo;.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">О революционных выступлениях Костюрина в годы первой русской революции в Народном доме неоднократно сообщал и ротмистр Леваневский. Вот что он писал 19 декабря 1905 года: &laquo;Бывшим политическим ссыльным Орестом Костюриным предпринято в Народном доме в Усть-Каменогорске ряд чтений, направленных частью к разъяснению Высочайшего Манифеста 17 октября, частью к ознакомлению слушателей с текущими событиями и сообщению различных газетных сведений&raquo;.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">Костюрин рассказывал слушателям о свободе слова, о большом количестве крестьянских податей, о борцах за свободу. &laquo;Обрисовав прежний порядок вещей,&nbsp; - докладывал Леваневский, - Костюрин пришел к тому, как была получена свобода, сколько жертв она стоила, и пригласил почтить вечную память павших борцов за свободу&raquo;. Беседа 11 декабря была посвящена теме: &laquo;Чего добиваются люди с красными флагами?&raquo; Они, пишет ротмистр, по его рассказу, добиваются, чтобы у господ и помещиков была отобрана земля и передана в пользование крестьянам, т. к. земля не творение рук человеческих и ею должен владеть тот, кто обрабатывает землю.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">Из этих документов видно, что в Народном доме в годы первой русской резолюции проходили активные общественные обсуждения политических событий, произносились свободолюбивые речи.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Times New Roman;">В этом же здании несколько лет спустя вновь собрались жители города на общественный митинг. Это было 14 марта 1918 года. В этот день здесь была провозглашена Советская власть и избран первый Совдеп, председателем которого стал Яков Ушанов. Несмотря на свое непродолжительное существование, этот орган Советской власти смог провести ряд очень важных и сложных работ: установил рабочий контроль на предприятиях, создал Красную гвардию, организовал общественные работы, принимал самые энергичные меры к восстановлению риддерских предприятий. Здесь же в один из теплых дней апреля состоялось первое организационное собрание молодежи города по созданию комсомольской организации.</span></span></p>
+<p style="text-align: right;"><em><span style="font-size: medium;"><span style="font-family: Times New Roman;">Р. ФЕДОРОВА, <br /> научный сотрудник музея</span></span></em></p>
+<p style="text-align: right;"><em><span style="font-size: medium;"><span style="font-family: Times New Roman;">&laquo;Рудный Алтай&raquo;, 25 октября 1967 г.</span></span></em></p>
+   &nbsp;
+</div>
+
+<script>
+	$('[data-fold-header]').click(function () {
+		var that = $(this);
+		var attr = that.attr('data-fold-header');
+		$('[data-fold-text="' + attr + '"]').each(function () {
+			var that = $(this);
+			if (that.css('display') === 'none')
+				that.css('display', 'block')
+			else
+				that.css('display', 'none')
+		})
+	});
+</script>
+
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

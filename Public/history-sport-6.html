@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пауэрлифтинг - Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        <div class="content-text">
+                            <h2>Пауэрлифтинг</h2>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Что же представляет собой пауэрлифтинг &ndash; &ldquo;силовой подъем&rdquo; в буквальном переводе? В отличие от рывка и толчка штанги, где исполнитель в любой момент может сорваться и &ldquo;дать петуха&rdquo;, упражнения силового троеборья простые и надежные, как мощное гудение басов. Тяжелая атлетика предъявляет чрезвычайно высокие требования, безжалостно отбраковывая всех у кого нет необходимой подвижности в суставах, резкости, высокой координации движений. Отсев шел колоссальный, но вот где могли реализовать себя как спортсмены те, кого забраковали для штанги? Можно только сожалеть, что у нас поздно появилось силовое троеборье. На моих глазах, не реализовав себя в тяжелой атлетике, сошло с помоста много великолепных силачей, не оставив никакого следа в спорте.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Что же входит в программу соревнований пауэрлифтинга?</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Упражнение первое &ndash; приседание со штангой максимального веса на плечах. На первый взгляд испытание только силы ног &ndash; но без соответствующей гармонии в силе мышц спины и брюшного пресса вас ждет фиаско. При внешней простоте упражнения правила пауэрлифтинга очень жесткие: сед недостаточной глубины штрафуется нулевой оценкой.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Упражнение второе: жим лежа с горизонтальной скамьи &ndash; проверка силы рук, груди и плечевого пояса. Караются ухищрения: уход на мост, отрывы пятки или носка пола, паузы и перерывы в движении.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Следующее &ndash; тяга становая. Нужно взять штангу с пола и выпрямится, подняв ее до пояса. Самое простое и самое тяжелое упражнение. Мышцы ног и всей спины трещат от напряжения, натягиваясь как буксирные тросы. Засчитывается только при полном выпрямлении ног и корпуса и отсутствии перерывов во время движения.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Подсчет результатов трех движений дает общую сумму троеборья и определяет победителя.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">За рубежом упражнения силового троеборья постоянно демонстрировали профессиональные атлеты в силовых шоу-программах. В упражнениях силового троеборья регистрировались и мировые рекорды &ndash; опять же среди профессионалов. Первый мировой рекорд канадца Дага Хепбурна в жиме лежа &ndash; 265 кг - был установлен в 1953 году. В 1957 году перешедший в профи 170-килограммовый &ldquo;Беби&rdquo;- Андерсон устанавливает рекорд в силовом троеборье &ndash; 1199кг (544+284+371)! Оговоримся сразу &ndash; этот рекорд существует скорее как курьез, поскольку был установлен Андерсоном на самодельной штанге, далекой от соревновательных стандартов, у нее даже диски были диаметром 1,5 м! В тяге он фактически только отрывал ее от пола на считанные сантиметры! Что впрочем, лишний раз доказывает степень восхищения зрителя того времени перед показом большой силы и популярность силовых упражнений.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">И у спортсменов &ndash; любителей Канады, Англии, США становится популярным силовое троеборье. Молодежи всегда было, свойственно стремление померится силами, проверить свои возможности, узнать предел своей силы. А великим стимулом для тренировок является желание увеличить свою силу, побить собственные личные рекорды в силовых упражнениях. Силовое троеборье позволяет наглядно увидеть рост своей силы. Для юношей это гораздо интереснее, чем монотонная и изнурительная работа над техникой классических упражнений тяжелой атлетики, которая в конечном итоге, может и не дать ни какого результата.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">В Англии существовала своя модификация атлетического троеборья: подъем на бицепсы, жим лежа, приседания. По нему соревнования проводились как на местном уровне, так и до чемпионатов страны, отдельно для взрослых и юниоров. Причем чемпионат Англии проводился одновременно в разных городах по отдельным весовым категориям, по-видимому, для большей популяризации силовых упражнений.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">В США силовое троеборье имело еще большую популярность. Проводились чемпионаты страны отдельно для взрослых и юниоров, первенство штатов, городов, университетов, воинских частей. Сверх того всевозможные матчевые встречи и турниры. В конце 1964 года Американский союз спортсменов-любителей официально признает эту разновидность тяжелоатлетического спорта и санкционирует ее дальнейшее массовое развитие. С января 1965 года уже официально регистрируется национальные рекорды США в приседаниях, жиме лежа, тяги становой и сумме троеборья. Утверждаются точные правила соревнований.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">В начале 70-х годов создается всемирная Федерация Пауэрлифтинга (JPF) и регистрируются мировые рекорды.</span></p>
+                            <p style="text-align: center;" align="center"><span style="font-family: times new roman,times; font-size: medium;">&nbsp;<strong>ПАУЭРЛИФТИНГ&nbsp; В&nbsp; ВОСТОЧНОМ КАЗАХСТАНЕ</strong></span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">И лишь летом 1987 года в Москве была создана Федерация атлетической гимнастики СССР, развивающая как бодибилдинг, так и силовое троеборье. Но вот что удивительно. В провинциальном городке Лениногорске, без всяких директив свыше уже процветала любимая молодежью атлетическая гимнастика. Лениногорцы лукаво воспользовались как поводом, указанием сверху развивать гиревой спорт. Два энтузиаста &ndash; В.Воробьев и А.Глушаков уже в 1985 году оборудовали спорт инвентарем 11 подвалов. Заработали клубы: &ldquo;Атлант&rdquo;, &ldquo;Прометей&rdquo;, &ldquo;Олимпия&rdquo;, &ldquo;Богатырь&rdquo;, &ldquo;Титан&rdquo;, &ldquo;Здоровье&rdquo;, &ldquo;Алмаз&rdquo;. Было организовано 14 атлетических групп, две группы атлетизма вел тренер с /к &ldquo;Лениногорец&rdquo; В Чернаков. Общее количество занимающихся достигло свыше полутысячи человек. Тогда же 1985 году лениногорцы первыми в области проводят соревнование по атлетизму. Соревнование решили провести в двоеборье &ndash; приседания со штангой и жиму лежа. Вот первые чемпионы: Подпальный, Пантелеев, Егоров, Черкасов, Голубь, Эскеров, Троеглазов, Глушаков, Казин, Болотов. Как и подобает тяжеловесам, самым сильным стал Николай Глебов, набрав в сумме 380кг.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Факт есть факт, Атлетический бум в Лениногорске начался на 2 года раньше, чем в областном центре. В Усть-Каменогорске в это время можно было найти 2-3 &ldquo;качалки&rdquo; (в &ldquo;Богатыре&rdquo; по ул. Гоголя и в спорт комплексе &ldquo;Алтайэнерго&rdquo;). А во Дворце Спорта у Ю.Седельникова занималась компания недюжинных атлетов: метатель В. Жуков, кряж В. Чиряев, священнослужитель В. Чирков и В. Сильвер. Все они, как и оставившие тяжелую атлетику мастера спорта братья Лоскутовы, уже не добивались высоких спортивных результатов, такие не работали и на красоту фигуры, а просто в свое удовольствие упражняли мышцы, поддерживая силу. Позже каждый из них скажет свое слово в пауэрлифтинге.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">А теперь, шляпы долой, господа, и минута молчания в память великого энтузиаста и пропагандиста спорта на Рудном Алтае &ndash; Александра Александровича Долгих. Всегда было множество околоспортивных дельцов, которые кормились возле спорта. В отличие от них, Сан Саныч просто&ndash;напросто жил спортом, как воздухом дышал. В чем самая главная разница. Сейчас появилось множество отцов пауэрлифтинга &ndash; как грибов после дождя. Я просто вынужден констатировать: самый первый чемпионат области по пауэрлифтингу &ndash; это целиком и полностью плод инициативы Сан Саныча. Самое первое соревнование пол силовому троеборью состоялось 3-4 апреля 1987 года под эгидой ВДФСО ( Последнее обстоятельство уже само по себе говорит о многом и ставит все точки над I ). Открытое личное первенство области проводила областная федерация гиревого спорта и атлетизма во Дворце спорта. Организацию проведения соревнований и судейсва взял на себя пионер Усть-Каменогорского атлетизма и тренер Дворца спорта по тяжелой атлетике Юрий Яковлевич Седельников. Открытое личное первенство области состоялось 3-4 апреля 1987 года. Главный судья Ю.Я.Сидельников, главный секретарь &ndash; мастер спорта В.А.Талинин. Согласно протоколу &ndash; 29 участников, среди которых известные атлеты и энтузиасты спорта: мастер спорта Р.Акунаев, В.Рязанов, В.Охрименко, Ю.Голубцов, А.Сушко, Н.Кулешов.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Соревнования проводились в 6 весовых категориях &ndash; из них в 5 победили лениногорцы. А вот самые первые чемпионы по силовому троеборью: А. Степанов, Ю.Четкасов, Н.Курчиков. А в весе 82,5 кг &ndash; единственный чемпион из Усть-Каменогорска мастер спорта международного класса и чемпион мира среди железнодорожников по тяжелой атлетике Александр Коробов показал абсолютно лучший результат чемпионата &ndash; сумму 575 кг (220+125+230). На втором месте молодой атлет А. Чиряев из с\к &ldquo;Алтай&rdquo; с суммой 515 кг. В 90 кг победил Н.Казин (520кг) и в тяжелом весе С. Болотов (475кг).</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Тогда же А.Долгих отметил и самое серьезное отношение к своему делу в спорт клубе &ldquo;Лениногорец&rdquo;, далеко опередившему областной центр по распространению новых видов спорта. В Усть-Каменогорске атлетизм стихийно практиковался в спортклубах &ldquo;Алтай&rdquo;, &ldquo;Восток&rdquo;,&nbsp; &ldquo;Хаджи-Мукан&rdquo;, которые и приняли участие в соревновании.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">В целом отношение к новому виду спорта было неоднозначным. В тот момент мастер спорта В. Шпичак счел преждевременным выставлять команду своих питомцев из дворового клуба &ldquo;Тополек&rdquo;, а также выступать самому и вступить в Федерацию гиревого спорта и атлетизма.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Летом 1987 года организована Федерация атлетической гимнастики СССР, объединившая под своим началом силовое троеборье и позирование (бодибилдинг). В итоге новые всплеск популярности атлетизма &ndash; в спорт клубе &ldquo;Восток&rdquo; мастер спорта В.Струков открывает секцию атлетизма, заработала секция и в тяжелоатлетическом зале спорткомплекса &ldquo;Алтайэнерго&rdquo;.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">И, наконец, самый первый чемпионат города Усть-Каменогорска по силовому троеборью состоялся 5-6 ноября 1987 года. Официально именовался личным первенством по атлетической гимнастике и проводился в дворовом клубе &ldquo;Зоренька&rdquo; два дня подряд в 8 весовых категориях. В соревновании приняли участие опытные штангисты, поэтому и турнир прошел на высоком уровне.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Вот первые чемпионы города по пауэрлифтингу: О. Бондаренко, Л. Перегудов, С.Головин, МСМК И. Кривицкий с суммой 455 (170+95+190), мастер спорта М Чимарев. Самая жаркая баталия разгорелась в весовой категории 82,5 кг. В итоге борьбы МСМК А. Коробов показывает отличный результат 600 кг в сумме (232,5+132+235)! Таким образом открывает неофициальный клуб шестисотников и первым покоряет кандидатский норматив в пауэрлифтинге среди Восточно-Казахстанцев. Александр Коробов герой первых соревнований по пауэрлифтингу, в которых всегда был абсолютным чемпионом. Достойную конкуренцию ему составил атлет Е.Мацаев с суммой 580 кг. На третьем месте &ndash; О.Зеленков, набравший неплохую сумму в 545 кг с наилучшим абсолютным результатом в становой тяге &ndash; 250 кг. Очень весомый получился рекорд города. В 90 кг победителем стал М. Мурадов, а в 100 кг мастер спорта В. Шпичак с суммой 570 кг (200+135+235).</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">В ноябре 1987 года на базе дворового клуба &ldquo;Тополек&rdquo; В.Шпичак открывает первый специализированный атлетический клуб &ldquo;Атлант&rdquo;. Проводит соревнования по атлетизму в тресте &ldquo;Алтайсвинецстрой&rdquo;. Из полсотни участников в восьми весовых категориях отличились Бондаренко, Каратаев, Мурадов.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Уходящий год завершило первенство области, проведенное в Лениногорске 5-6 декабря.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Для поклонников силовых видов спорта знаменательным стал 1988 год. С 18 по 21 февраля в Тюмени проводят Первый Кубок СССР по силовому троеборью. МСМК А.Коробов был единственным представителем ВКО на этих соревнованиях. Выступив в категории до 75 кг, в первом движении &ndash; приседании со штангой справляется с весом 230 кг и попадает в тройку лидеров. За тем как и все штангисты новой формации сдает позиции в жиме лежа. На первых соревнованиях по троеборью по началу штангисты в становой тяге пользовались привычным для них толчковым хватом вместо разнохвата. Эта ошибка стоила Александру призового места &ndash; чуть- чуть не дотянул до бронзы. Всего набрал в сумме 605 кг (230+130+245). А до норматива Мастера спорта ему оставалось каких-то 20 кг. Его результаты стали первыми рекордами Казахстана.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Буквально в это же время в Усть-Каменогорске в дворовом клубе &ldquo;Костер&rdquo; проходит личное первенство ВКО по атлетической гимнастике &ndash; в программе силовое троеборье и свободное позирование. Участвуют свыше 70 атлетов из областного центра и Лениногорска. В троеборье отличились: Д. Мязин, Н. Рактянский, В. Ефимов, А. Егоров, И. Звягинцев, Д. Романов, Е. Мацаев, О. Зеленков.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">В позировании лучшим стал динамовец Е. Мацаев, получивший приз за лучшую фигуру и гармоничное телосложение. Отметим его как первого чемпиона по бодибилдингу и пионера позирования.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Дальнейшие состязания по силовому троеборью в стенах &ldquo;Атланта&rdquo; в течение 1988-89 гг проводит его тренер В. Шпичак. Нельзя не упомянуть его незаурядные организаторские способности проводит личное первенство города среди юношей по программе двоеборья жим лежа и тяга. Затем чемпионат города для всех желающих независимо от размера и возраста. Приняло участие свыше полсотни человек, из них самому младшему -12 лет. А самый старший &ndash; Р. Малимонов мастер спорта по штанге с 30 -летним спортивным стажем и в 47 лет не хотел покидать помост!</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Сейчас приятно вспомнить атлетический бум тех лет &ndash; огромную популярность, которую имел атлетизм, массу энтузиастов участвующих в соревнованиях по троеборью. И стар и мал стремились укротить неподатливый металл. Удивительно на сколько силен был дух спорта, азарт борьбы, накал страстей. Сражались за призовые места из чувства спортивного престижа &ndash; ведь даже за первые места призы выдавались чисто условные, фактически речь идет только о почетных грамотах. Как быстро все меняется &ndash; нынешней молодежи только &ldquo;баксы&rdquo; подавай!</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Почему- то стало традицией &ndash; самые жаркие сражения вспыхивают в весе до 82,5 кг. Здесь постоянная конкуренция между товарищами и партнерами по тренировкам, будущими тренерами: Муксимовым, Львовым, Теряевым. Вдобавок им периодически подсыпают перца сильные тяжелоатлеты Мацаев и Малимонов. Каждое их появление на помосте заканчивается уверенной победой.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Не менее азартное соперничество было и в весе до 100 кг &ndash; здесь так же делит пьедестал извечная тройка: Попов, Подрезов, Коломин. В первом движении идут вровень, ноздря в ноздрю, в жиме Попов отрывается на десяток килограммов, а в последнем движении &ndash; тяги становой Подрезов ставит победную точку. И от соревнования к соревнованию, в пылу борьбы на много увеличивают личные рекорды.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">У тяжеловесов лучшим был гигант В. Жуков, вы прошлом десятиборец и метатель и по сей день не сняты его рекорды ВКО в категории до 125 кг.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">В течение 2-х лет вне конкуренции был В. Шпичак, при весе 90 кг набиравший абсолютно лучшую сумму в области &ndash; 610, затем 645кг. Он стал еще одним атлетом, выполнившим норматив КМС в пауэрлифтинге. (Первый &ndash; Коробов, второй - Мацаев).</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Затем атлетические клубы, работающие на коммерческой основе, выходят из областной федерации гиревого спорта и атлетизма, перед предлогом создания своей собственной федерации бодибилдинга и пауэрлифтинга. После раскола в &ldquo;Атланте&ldquo; не проводят соревнований по силовому троеборью около десяти лет. Организацией соревнований теперь руководит мастер спорта Р. Акунаев, а проходят они в спортзалах энергетического техникума и дома культуры железнодорожников.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Свежую струю принес чемпионат области 12 декабря 1989 года. Хорошее обновление получилось по составу команд &ndash; участвовали сборные из Шемонаихи, Серебрянска, Таврического района и Саратовского сельхозтехникума. Грозным соперником для всех стала команда штангистов из клуба железнодорожников - в большинстве своем кандидаты в мастера спорта. Но к этому времени пауэрлифтеры набрались сил и опыта и не сдали своих позиций, выдержав натиск тяжелоатлетов! Победителями стали &ndash; Цикунов и Худяков из Шемонаихи, усть-каменогорцы: Косолапов, Горбунов, Теряев, Малимонов, Подрезов.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: times new roman,times; font-size: medium;">Полной неожиданностью для многих стал успех троеборцев из Шемонаихи. В легких весовых категориях они захватили лидерство по области. Большие надежды подавал 15-летний М. Цикунов.</span></p>
+                        </div>
+                        <script>	
+                            $('[data-fold-header]').click(function () {		
+                                var that = $(this);		
+                                var attr = that.attr('data-fold-header');		
+                                $('[data-fold-text="' + attr + '"]').each(function () {			
+                                    var that = $(this);			
+                                    if (that.css('display') === 'none')				
+                                        that.css('display', 'block')			
+                                    else				
+                                        that.css('display', 'none')		
+                                })	
+                            });
+                        </script>
+                    </div>                
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

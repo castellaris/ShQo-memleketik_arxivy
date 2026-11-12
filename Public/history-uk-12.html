@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Государственный архив Восточно-Казахстанской области и его филиалы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label">
+            <span class="poll-label">?????</span>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Кнопки управления доступностью (А+, А-, слабовидящие) -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="#bottom" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <!-- Блок новостей архива -->
+                <div id="main-content">
+                    <div>
+                        
+
+
+
+
+
+<div class="content-text">
+   <h2>Все тот же 1913-й год</h2>
+   
+   <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">1913 год. Именно с ним сравнивали долгие годы достижения советской власти, стремясь подчеркнуть &laquo;наших дел громадье&raquo;. Школьники чуть ли не с первого класса впитывали постулаты по поводу отсталой, закрепощенной России и столь же неразвитого Казахстана, какими являлись они, якобы, в 1913 году. Создавалось впечатление поголовного голода, разрухи, нищеты. Но так ли это было на самом деле?</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Недавно в руки наших историков и&nbsp;&nbsp; краеведов попал интереснейший документ - &laquo;Свод обязательных постановлений для жителей Усть-Каменогорска&raquo;,&nbsp;&nbsp; датированный 1913 годом. Эту пожелтевшую и ветхую от времени книжечку отпечатали свое время в электролитографии&nbsp;&nbsp; Торгового дома &laquo;Плещеев и К&raquo; в г.Семипалатинске. А обнаружил документ житель Усть-Каменогорска В.Мурзин, разбирая спой пыльный чердак при сносе старинного дома, что стоял на углу улиц Урицкого&nbsp; и&nbsp; Мира.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Находка полновесного неопубликованного ранее источника, касающегося истории дореволюционного города, - редчайший подарок судьбы. Так давайте же перелистаем страницы, написанные 80 лет назад. В них - масса любопытных сведений.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Свод состоит из трех частей, 14 разделов и 127 параграфов. Вот, например, раздел</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>О постройках города<br /> </strong>В Усть-Каменогорске, как в любом городе дореволюционной провинции, в центре находилась площадь, где стоял Никольский собор. Недалеко были выстроены торговые ряды, казначейство, Народный дом и, конечно, полицейское управление. Был и свой городской сад. Внешний облик обывательских домов разнообразен: от почти деревянных изб до зданий, своеобразно сочетавших в себе классицизм и модерн. В основном, дома строились деревянные, один-два этажа, изредка &mdash; с мезонином. Иногда первый этаж делали каменным, а верхний деревянным. Встречались и целиком каменные дома. Кстати, первым кирпичным домом был двухэтажный дом золотопромышленников Валитовых.</span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;">Торговые ряды</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 109. По Троицкой и Татарской улицам и переулкам между ними не дозволяется устраивать плетневых заборов, а заборы должны быть устраиваемы тесовые или каменные.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 112. В частных домах и разного рода промышленных и торговых заведениях, безразлично каменных или деревянных наружные двери должны отворяться непременно наружу.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Домовладельцы и ведомства, которые владели домами, обязывались исправлять улицы и тротуары против своих дворовых мест таким образом, &laquo;чтобы средина улицы была выпуклой, с небольшим уклоном к тротуарам, возле коих делается углубление для стока воды&raquo;. Причем, тротуары должны быть в семь аршин от стены зданий, усыпаны щебнем или галькой, с уклоном к улице. Такие работы производились по указаниям городского общественного управления.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Согласно музейным источникам, на благоустройство города в 1860 году выделялось 2 рубля, в 1899 &mdash; ассигновано на эти цели уже 3373 рубля. Причем, почти половина была израсходована на ремонт и расширение городской тюрьмы.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Или вот еще&nbsp;&nbsp; факт. В городе в конце XIX века был всего один фонарь, он висел у входа в публичный дом, который содержала купеческая вдова Проскурякова, занимаясь типично&nbsp;&nbsp; городским видом&nbsp;&nbsp; &laquo;предпринимательства&raquo;.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">16 декабря 1905 года собрание городских уполномоченных рассмотрело городскую бюджетную смету на 1906 год, а 6 января 1906 года ее опубликовала газета &laquo;Семипалатинский листок&raquo;. Вот как она выглядела:<br /> 1. Участие в расходах по содержанию правительственных учреждений &mdash; 180 р.&nbsp; (0,8%).<br /> 2. Содержание общественного управления &mdash; 3522 р. 50 к. (15,9%).<br /> 3. Квартирная повинность - 100 р. (0.4%).<br /> 4. Содержание полиции - 2328 р. (10.4%),<br /> 5. Содержание&nbsp;&nbsp; пожарной команды&nbsp;&nbsp; - 3335р. 90 к. (14,8%).<br /> 6. Благоустройство города - 810 р. (3,6%).<br /> 7.Народное&nbsp;&nbsp; образование - 7123 р. 60 К. (32%).<br /> 8.Медицинская, ветеринарная и санитарная части - 3115 р. (13,8%).<br /> 9.Прочие&nbsp;&nbsp;&nbsp; расходы&nbsp;&nbsp; - 1796 р. (8%).<br /> Всего: 22416 р. 40 к.&nbsp;&nbsp;&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В начале XX века облик провинциального Усть-Каменогорска менялся. Возникнув как крепость, устроенная с земляным валом по системе Вобана, в 1804 году Усть - Каменогорск становится заштатным городом, то есть невошедшим в список губернских или уездных городов при введении в действие губернской реформы&nbsp;&nbsp; 1875 года,&nbsp;&nbsp; а спустя 64 года &mdash; уездным городом Семипалатинской области.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Рост населения&nbsp;&nbsp; Усть-Каменогорска за два столетия:<br /> 1720-363<br /> 1823-661<br /> 1825-1304<br /> 1829-2000<br /> 1835-2348<br /> 1840-2181<br /> 1851-2855<br /> 1855-3471<br /> 1861-3874<br /> 1870-3490<br /> 1879-4842<br /> 1882-5372<br /> 1887-7119<br /> 1898-8522<br /> 1899-8875<br /> 1900-12676<br /> 1907-13164<br /> 1917-12327</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В период с 1897 по 1913 годы население города почти удвоилось до 13164 человек за счет притока переселенцев, развития торговли и промышленности. Росла и городская застройка. Появились новые здания: общественные - Народный&nbsp;&nbsp;&nbsp; дом, кинотеатр &laquo;Эхо&raquo;, Мариинское училище, промышленные - механические мастерские Костюрина, торговые &ndash; купеческие торговые ряды, культовые &ndash; Покровский собор, Преображенская церковь, мечети Ахмет-Сафа и Рангулова. Улицы были покрыты гравием, на некоторых даже сделаны тратуары из громадных плит известняка размером метр на метр.</span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;">Покровский собор</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Одними из первых улиц в городе в XVIII были улицы Ильинская, Троицкая, Большая, Андреевская с переулками Соляным, Крепостным, Мечетским, Соборным. В конце XIX века и начале нынешнего расширяются границы города. Появляются четыре новые улицы &ndash; Никольская, Медвежья, Садовая. Канавная и новые переулки (Сенной, Приходской, Малороссийский и др.). К примеру, появление телеграфного переулка не случайно. Оно объясняется тем, что в 1880 году впервые был проведен телеграф от Семипалатинска в Усть-Каменогорск, Кокпеты и Зайсанский пост.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 20.&nbsp; Каждый домовладелец обязан улицу до половины всей ширины против своего дворового места содержать в чистоте и исправности, устраняя сор и назем; заравнивая ямы и выбоины.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 23. Содержатели заводских и других промышленных заведений на 20 сажен в окрестностях своих заведений обязаны соблюдать полнейшую опрятность, устраняя нечистоты посредством зарывания их в ямы, отведенные городским управлением.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Если домовладельцы или учреждения в течение трех суток со времени получения повестки от городского старосты не исправляли улицы и тротуары, то они привлекались к уголовной ответственности. Кроме того, по распоряжению городского общественного управления ремонт улицы или тротуара производился за счет домовладельцев или ведомства, владеющего постройкой.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>О мерах предосторожности от пожаров<br /> </strong>&sect; 12. Воспрещается на городских землях и островках пускать палы.<br /> &laquo;Свод&nbsp;&nbsp; обязательных&nbsp;&nbsp; постановлений&raquo; включал 12 пунктов о мерах предосторожности от пожаров. Согласно им &laquo;домовладельцы обязаны вычищать&nbsp;&nbsp; дымопроводы&nbsp;&nbsp; в каждые&nbsp;&nbsp;&nbsp; три месяца&nbsp;&nbsp; один раз&raquo;, воспрещалось&nbsp;&nbsp;&nbsp;&nbsp; также бросать сигареты и&nbsp;&nbsp; папиросы на улицах, а во всех торговых рядах&nbsp;&nbsp; около&nbsp;&nbsp;&nbsp; лавок строго воспрещалось&nbsp;&nbsp; складывать какой бы то ни было товар, &laquo;ломанные&nbsp;&nbsp; экипажи, телеги, бочки, ящики и укупорочные отбросы: сено, солому, бумагу, рогожи, обломки досок и прочее&raquo;. Воспрещалось хранение в больших количествах керосина, дегтя, смолы, а также варка смолы, топка сала, литье свечей.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><br /> Главная опасность городу грозила от неосторожного обращения с огнем. Бывали годы, когда выгорали десятки домов, поэтому на случай пожаров с 1861 года содержался &laquo;пожарный обоз&raquo;; рабочих нижних чинов унтер-офицеров - 1,&nbsp;&nbsp; рядовых - 8, лошадей, принадлежащих городу - 4, труб - 1, рукавов - 2, экипажей&nbsp;&nbsp; зимних и летних - по 4, бочек - 2, ведер - 9...&raquo;. Но только 1 июля 1889 года был официально утвержден штат пожарной команды из 12 человек и обоза. Команда подчинялась полиции, а потому пожарные &laquo;чистили и убирали улицы, зажигали уличные фонари, ловили бродячих собак, усмиряли пьяных в полицейских участках&raquo;. В случае пожара на помощь спешили городские&nbsp;&nbsp; извозчики, чтобы доставлять на место пожара&nbsp; запасные&nbsp;&nbsp; бочки&nbsp;&nbsp; с водой. При этом первый явившийся извозчик получал от городского управления вознаграждение в размере 1 руб., второй&nbsp; - 50 коп., третий&nbsp; - 20.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>О паромной переправе<br /> </strong>С давних времен в городе было два перевоза: один через р.Иртыш на двух паромах и двух карбасах с несколькими лодками, &laquo;на счет земского сбора по 995 р. в год на четырехлетие с 1862 по 1866 годы&raquo;, а другой - через р.Ульбу - содержался от горного Ведомства крестьянами. На нем производился сбор по установленной таксе. В начале XX века мост через Ульбу и нижний паром на Иртыше арендовал Рудаков, а верхний городская управа сдала Обухову.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Содержатель паромной переправы через Ульбу к открытию навигации должен был иметь &laquo;в исправности все паромные принадлежности и лодки: припаромки в тех местах, где паром по мелководью ходить не может&raquo;. На пароме, на видном месте, в рамке под стеклом выставлялась такса за перевоз надлежащим манером утвержденная, а также имелась выданная от городской управы книга для записывания жалоб.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 32. При пароме содержатель обязан иметь якорь и небольшую спасательную лодку с веслами, шестами, багром.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>В ночных караулах<br /> </strong>В ведении городской полиции находились караульщики, которые снабжались особым знаком городского управления.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 13. На обязанность жителей города возлагается охрана имущества от краж и в некотором отношении, содержать ночной караул, для чего с общего согласия домовладельцев нанимаются в их счет, за определенную плату, караульщики, по расчету на каждые два квартала по одному караульщику.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Караульщики находились на своем посту с наступлением полной темноты до рассвета. Имели при себе колотушку, в которую стучали, лишь обнаружив поджоги, давая знать жителям о случившемся. В случае кражи или излома, караульщики немедленно доносили об этом полицейским.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>Об извозном промысле <br /> </strong>Единственным видом транспорта в городе были грузовые и легковые извозчики. Этот промысел был характерен для городских жителей, однако извозом занимались в большинстве случаев крестьяне, проживавшие в&nbsp; пригороде. Разрешение на извозный промысел выдавалось людям &laquo;добропорядочным&raquo; и платящим взносы в доход города.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 35. Лица моложе 17 лет от роду не допускаются к занятию извозом ни сами от себя, ни от хозяев.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Все извозчики Усть-Камевогорска входили в общую артель, снабжались от городского управления печатным экземпляром правил, жестяными знаками с номерами. Один знак должен был находиться на кушаке извозчика, другой прибит на козлах экипажа, а большой третий прибивался на заднюю стенку экипажа, чтобы его издали было видно. Два раза в год, в начале весны и зимы, городской пристав с городским старостой и ветеринаром производили осмотр всех экипажей. Требования предъявлялись такие: экипажи в исправности, лошади здоровы, хорошо выезжены и без норова: сбруя прочная и чистая...<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Извозчики не имели права отказываться вести пассажиров в местность, &laquo;означенную в таксе&raquo;, а также брать плату свыше &laquo;таксы&raquo;. Они обязаны были подчиняться общим правилам езды по городу. Те, кто нарушал правила, наказывались: у них отбирали номерные знаки и разрешение на промысел.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>О мерах безопасности от домашних животных</strong> <br /> &sect; 76. Владельцы собак должны держать их на привязи и выпускать со двора не иначе, как с ошейниками и намордниками. При несоблюдении сих правил, собаки будут уничтожаемы по распоряжению полиции и городского общественного управления без всяких предварительных предупреждений.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В четырех параграфах подробно оговаривалась судьба бродячих собак, которых ловили специальные рабочие и доставляли в особое помещение, устроенное на городские средства, где животные содержались в течение трех суток. Если за это время хозяева не предъявляли требований и не платили штраф по 50 коп., то такие собаки истреблялись. Частным лицам, не имеющим особого письменного разрешения, категорически запрещалось в виде промысла истреблять бродячих собак.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>Торговля <br /> </strong>&sect; 83. На основании&nbsp;&nbsp; п 5. Сего Положения в воскресные дни и двунадесятые праздники торговля и занятия служащих не допускаются, а в остальные дни могут продолжаться не свыше 12 часов в сутки.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 1913 году Усть-Каменогорск не относился к числу городов с развитой промышленностью. Хозяйственная жизнь сосредотачивалась, в основном, вокруг торговли, золотопромышленности, мелкого промышленного и&nbsp;ремесленного&nbsp;производства. Поэтому в &laquo;Своде&raquo; много внимания было уделено торговле.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Торговля в городе велась с утра до вечера, тут же, при купеческом доме, где выделялось место для лавки и склада. В&nbsp; воскресенье закрывали лавки раньше, на пасху не работали три дня, на Рождество - два, на Троицу и Масляннцу торговали лишь некоторые магазины.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В переулке Пожарном был купеческий лабаз Ахмета Рафикова, который вел торговлю красными товарами, мануфактурой, вятскими и тульскими гармониями, детскими игрушками. По улице Большой находилась табачная лавка В.Лозова, который сам выращивал табак и занимался торговлей. Пачка табака производства В.Лозова хранится сейчас в музее. Кстати, в 1913 году в Усть-Каменогорске было собрало 1183 пуда табака.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В Соборном переулке, в москательной лавке, можно было приобрести такие химико-москательные товары, как сандал, скипидар, ладан, олифу, чернильные орешки, румянец плиточный, деревянное масло, белила, ярь, квасцы, купорос, нашатырь. Купец Кожевников торговал всевозможными хрустальными изделиями, железно-эмалированной, фарфоровой, фаянсовой кухонной и столовой посудой. Музейные экспонаты позволяют проиллюстрировать эту торговлю. За 47 лет существования историко-краеведческого музея собрана прекрасная коллекция фарфоровой и фаянсовой посуды, представляющей изделия фабрики Гарднера в Москве и Товарищества заводов С. Кузнецова,&nbsp;&nbsp; производительность&nbsp;&nbsp;&nbsp; которых в начале&nbsp; XX века достигла 7 тыс. рублей, то есть 2/3 производительности всех керамических заводов России. Местные купцы&nbsp;&nbsp; привозили изделия этих заводов с Нижнегородской и Ирбитской&nbsp;&nbsp; ярмарок. Старожилы города семьи Столбовых, Туровых, Выдриных, Каратаевых,&nbsp;&nbsp; Цветиковых, Михеевых, Ильиных чаще всего местом покупки называют магазин купца Кожевникова Ивана Никифоровича. Посуда в магазине представляла разнообразие ассортимента кузнецовской&nbsp;&nbsp; фирмы.&nbsp;&nbsp; Здесь - сервизы чайные, столовые, на 36 персон, чашки с блюдцами (к слову, выпускалось 329 форм одних только чашек!), сливочники, сахарницы, супницы. Изделия привлекали покупателей своей имитацией под металл, дерево. Формы были самые неожиданные. Так,&nbsp;&nbsp; масленки делались курицей, тыквой, дыней, редькой, блинами, капустой, карасем, пчелой, яйцами, бантом, ананасом, луковицей, грибами... На некоторых изделиях есть краткая надпись &laquo;Кузнецов&raquo;, которая ставилась на посуде,&nbsp; предназначенной для торговли со Средней Азией и Казахстаном.<br /> </span></p>
+<p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: medium;"></span></p>
+<p style="text-align: center;"><span style="font-size: medium; font-family: 'times new roman', times;">Магазин купца Кожевникова</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Напротив электрокинотеатра &laquo;Модерн&raquo; было расположено одноэтажное каменное здание винной лавки, где продавалась и местная продукция.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Примечательно, что винокуренный завод, названный Аленинским № 23, был открыт в городе в 1909 году. По архивным данным 1914 года этот завод принадлежал товариществу В.Полякова - &laquo;Торговому делу П.П.Плещеев и К&raquo;. Здесь было 50 рабочих, а сумма продукции составляла 100000 в год. Производство носило явно промышленный характер. Здесь имелся аппарат Генуа для разваривания зерна под давлением и много других машин&nbsp; и аппаратов.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Было в городе два пивзавода. В ассортименте винных и пивных лавок широко представлялась продукция Семипалатинска. Это спирт, пиво, фруктовые воды &laquo;Торгового дома Ф.Плещеева и К&raquo; (годовое производство 69776 ведер), пиво заводов В.Арефьева, С.Никитина, &laquo;Бавария&raquo;.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В &laquo;Своде&raquo; особо оговаривалось устройство пивных распивочных лавок. Помещение должно состоять из одной комнаты площадью не менее шести квадратных саженей. Вход непременно с улицы. Внутри достаточно дневного света. Есть ледник. Над входом - вывеска: для пивных лавок - белыми буквами, для временных выставок - черными. В пивных лавках допускалась музыка, игры на бильярде, в кегли (но на это нужно было разрешение и плата особого сбора). В обязанность содержателя входило &laquo;наблюдение за порядком и благочинием в заведении..., чтобы посетители не напивались до охмеления, а охмелевшие были ограждены от увечья и ограбления... видимо, пьяные не допускались в заведение&hellip;, а также учащиеся, малолетние и заведомо распущенные женщины&raquo;. Места произведения питейной торговли ограничивались.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 87. Заведения, в коих производится раздробительная продажа крепких напитков, кроме мест указанных в законе, не должны быть открываемы в домах с выходом на Троицкую и Татарскую улицы..., а также у паромной переправы на р.Улъбе на расстоянии не менее одного квартала от переправы. В пригородной слободе за р.Ульбой не дозволяется открывать более одного питейного заведения.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Весьма красноречивы данные статистики: на каждого жителя города приходилось два с четвертью ведра водки в год, не считая наливки и красных вин, а цена поставки за одно ведро 40-градусного спирта колебалась от 1 рубля 10 коп.&nbsp; до 1 рубля 20 коп.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;"><strong>О санитарных мерах<br /> </strong>&sect; 42. В мясных лавках мясо должно быть повешено на железные, луженые крючья и завешано чистыми пологами.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">&sect; 53. Не допускается раскладывать на земле съестные продукты, назначенные для продажи, как то: хлеб. рыбу, дичь, овощи и т. п.<br /> </span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Согласно этому, в центре прямоугольной рыночной площади тянулись длинные прилавки съестных товаров&mdash; овощной, колбасный, рыбный ряды. Торговлю рыбой вели рыбопромышленники Остропольский, братья Подойниковы, Сорокин, Герасимов. В 1956 году 70-летний житель села Тополев мыс Абнлхасым Кожаев вспоминал, что те четыре зимы подряд, примерно, в 1898&mdash;1902 гг. работал он сам еще с 20-ю рыбаками на Зайсане у рыботорговца из Усть-Каменогорска. За день они устанавливали подо льдом 150-200 сетей. Рыбу привозили в баркасах с озер Зайсана, Маркаколя, с устья Черного Иртыша. Продавались разнообразные породы рыб.&nbsp;&nbsp; Были стерлядь, осетр, шип, нельма, окунь, щука, язь, налим, сом, таймень, хариус. На городской рынок рыбу обычно привозили&nbsp;&nbsp; зимой и продавали&nbsp; в&nbsp; замороженном виде. Фунт стерляди&nbsp;&nbsp; стоил 8-15 коп., летом &ndash; 25-30 коп.</span></p>
+<p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">После реставрации &laquo;Свод обязательных постановлений для жителей г.Усть-Каменогорска&raquo; приобрел новую жизнь - жизнь музейного экспоната. Ныне происходит переоценка ценностей. Но согласитесь, как созвучен нашему времени этот документ.<br /> </span></p>
+<p style="text-align: right;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>Г. ЩЕРБИК,<br /> ведущий научный&nbsp;&nbsp; сотрудник областного историко-краеведческого музея </em></span></p>
+<p style="text-align: right;"><span style="font-family: 'times new roman', times; font-size: medium;"><em>&laquo;Рудный Алтай&raquo;, 27 марта 1993 г.</em></span></p>
+   &nbsp;
+</div>
+
+<script>
+	$('[data-fold-header]').click(function () {
+		var that = $(this);
+		var attr = that.attr('data-fold-header');
+		$('[data-fold-text="' + attr + '"]').each(function () {
+			var that = $(this);
+			if (that.css('display') === 'none')
+				that.css('display', 'block')
+			else
+				that.css('display', 'none')
+		})
+	});
+</script>
+
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+
+                    <!-- Погодный информер -->
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал и Баннеры -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+
+                <br />
+                <!-- Панель гос. ресурсов -->
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

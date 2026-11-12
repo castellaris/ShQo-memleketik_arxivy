@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>История архива — Государственный архив ВКО</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Навигационные кнопки -->
+    <a onclick="NavigateBack()" class="navigationLink" style="left:0%; cursor:pointer;">
+        <div class="button-text navigationBtn back"></div>
+    </a>
+    <a href="#top" class="navigationLink" style="right:0%;">
+        <div class="button-text navigationBtn top"></div>
+    </a>
+    <a href="#bottom" class="navigationLink" style="bottom:0; right:0%;">
+        <div class="button-text navigationBtn bottom"></div>
+    </a>
+
+    <!-- Выдвижной опрос -->
+    <div id="interview-box" class="hide-box">
+        <div id="request-box">
+            <form id="answer-form" method="post" action="">
+                <input id="Id" name="Id" type="hidden" value="5" />
+                <div class="display-field"><p data-i18n="poll-question">Какой раздел сайта для Вас наиболее интересен?</p></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV1" /> <span data-i18n="poll-opt1">Научно-методическая база</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV2" /> <span data-i18n="poll-opt2">Личные фонды</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV3" /> <span data-i18n="poll-opt3">Сборники документов</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV4" /> <span data-i18n="poll-opt4">Публицистика</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV5" /> <span data-i18n="poll-opt5">История края</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV6" /> <span data-i18n="poll-opt6">Базы данных</span></div>
+                <div class="display-field"><input type="radio" name="answer[]" value="pAV7" /> <span data-i18n="poll-opt7">Фотогалерея</span></div>
+            </form>
+            <div style="text-align: center;">
+                <div id="message-answer">
+                    <a href="#" id="answer-ok" class="button button-text answer" data-i18n="poll-btn">Проголосовать</a><br />
+                </div>
+                <a class="one-link" href="#" data-i18n="poll-archive">Архив опросов</a>
+            </div>
+        </div>
+        <div id="request-label"></div>
+    </div>
+
+    <!-- Шапка -->
+    <div id="top-block">
+        <div id="header">
+            <a name="top"></a>
+            <div id="title-block" class="content-block">
+                <div id="logo">
+                    <a href='index.html'><img alt="Логотип" src='Content/Images/lang/Logo_ru.png' border="0" /></a>
+                </div>
+                <div id="title">
+                    <a href='index.html'><h1 data-i18n="main-title">Государственный архив Восточно-Казахстанской области и его филиалы</h1></a>
+                </div>
+                <div id="language-box" class="d-flex align-items-center">
+                    <select id="language-select" class="form-select form-select-sm shadow-sm me-2" onchange="changeLanguage(this.value)">
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="eng">ENG</option>
+                    </select>
+                    <!-- Панель доступности -->
+                    <div class="accessibility-controls d-inline-flex align-items-center gap-1">
+                        <button id="accessibility-toggle" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Версия для слабовидящих">👁️</button>
+                        <button id="font-decrease" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Уменьшить текст">A-</button>
+                        <button id="font-increase" class="btn btn-sm btn-outline-dark" style="background-color: white;" title="Увеличить текст">A+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-line">
+            <div class="content-block">
+                <div class="left-box" style="margin-top: -7px;">
+                    <div><h2 data-i18n="archive-short">Государственный архив ВКО</h2></div>
+                    
+                    <!-- Выпадающий список филиалов -->
+                    <div id="filials">
+                        <span data-i18n="branches-title">Филиалы госархива ВКО</span>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a href="branch-ustk.html" data-i18n="branch-1">Усть-Каменогорский филиал по л/с</a></li>
+                                <li><a href="branch-zaisan.html" data-i18n="branch-2">Зайсанский филиал ГАВКО</a></li>
+                                <li><a href="branch-ridder.html" data-i18n="branch-3">Риддерский филиал ГАВКО</a></li>
+                                <li><a href="branch-zyryan.html" data-i18n="branch-4">Филиал Алтай ГАВКО</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="find">
+                        <div id="find-box">
+                            <form method="post" action='#'>
+                                <div id="find-field"><span data-i18n="find-label">Поиск</span> <input type="text" name="text" id="find-text" /></div>
+                                <input type="submit" class="find-btn" value="" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Интегрированный блок панелей -->
+        <div id="top-content">
+            <div class="content-block">
+                <div id="top-content-panel">
+                    <div id="top-content-block">
+                        <a href='chronicle.html'><div class="bd-panel"><div id="img-pen"><h2 data-i18n="panel-chronicle">Цифровая летопись ВКО</h2></div></div></a>
+                        <a href='metrics.html'><div class="bd-panel"><div id="img-computer"><h2 data-i18n="panel-databases">Базы данных</h2></div></div></a>
+                        <a href='guestbook.html'><div class="bd-panel"><div id="img-book"><h2 data-i18n="panel-guestbook">Гостевая книга</h2></div></div></a>
+                    </div>
+                    <div id="banner-block">
+                        <div id="slider-box">
+                            <div id="slider">
+                                <img src="Content/Images/lang/photo_2026-10-01_16-40-16.jpg" alt="Слайд 1" title="photo_2026-10-01_16-40-16.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-17_16-34-20.jpg" alt="Слайд 2" title="photo_2026-09-17_16-34-20.jpg" />
+                                <img src="Content/Images/lang/photo_2026-09-04_15-33-39.jpg" alt="Слайд 3" title="photo_2026-09-04_15-33-39.jpg" />
+                            </div>
+                            <div id="arrow-left"></div>
+                            <div id="arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="middle-content">
+        <div class="content-block">
+            <!-- Верхнее меню -->
+            <div id="top-menu">
+                <ul>
+                    <li><a href="branch-ustk.html" data-i18n="menu-contacts">Контактная информация</a></li>
+                    <li><a href="history.html" data-i18n="menu-history">История архива</a></li>
+                    <li><a href="funds.html" data-i18n="menu-funds">Характеристика фондов</a></li>
+                    <li><a href="structure.html" data-i18n="menu-structure">Структура, функции</a></li>
+                    <li><a href="activity.html" data-i18n="menu-activity">Деятельность архива</a></li>
+                    <li><a href="reading-room.html" data-i18n="menu-reading">Читальный зал</a></li>
+                </ul>
+            </div>
+
+            <div class="page site-page">
+                <div id="main-content">
+                    <div>
+                        <div class="content-text">
+                            <h2>История архива</h2>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Государственный архив Восточно-Казахстанской области образован в 1940 году с подчинением архивному отделению управления народного комиссариата внутренних дел Казахской ССР по Восточно-Казахстанской области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Согласно приказу управления народного комиссариата внутренних дел Казахской ССР от 31 октября 1941 года №68 архивное отделение было переименовано в отделение государственных архивов управления народного комиссариата внутренних дел (НКВД) Казахской ССР по Восточно-Казахстанской области. Госархив области стал подчиняться отделению государственных архивов. До 1946 года начальник архивного отделения, затем отделения государственных архивов исполнял обязанности директора госархива области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">На основании распоряжения Совета народных комиссаров СССР от 2 сентября 1945г. №130092-р и приказа НКВД СССР от 12 сентября 1945г. №381 государственные архивы СССР были включены в число научно-исследовательских учреждений.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 1946г. отделение государственных архивов переименовано в архивный отдел управления народного комиссариата внутренних дел Казахской ССР по Восточно-Казахстанской области, с марта 1946г. – с подчинением Министерству внутренних дел Казахской ССР по Восточно-Казахстанской области. Госархив области подчинялся архивному отделу.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 1957г. архивный отдел стал подчиняться управлению внутренних дел исполнительного комитета Восточно-Казахстанского областного Совета депутатов трудящихся.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Во исполнение постановления Совета Министров Казахской ССР от 17 июня 1960г. №548 «О преобразовании архивного управления Министерства внутренних дел Казахской ССР в архивное управление при Совете Министров Казахской ССР» и решения Восточно-Казахстанского облисполкома от 30 июня 1960г. №303 архивный отдел стал функционировать при исполнительном комитете Восточно-Казахстанского Совета народных депутатов трудящихся.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В соответствии с постановлением Совета Министров Казахской ССР от 21 мая 1963г. «О создании краевых и областных государственных архивов» был образован Зайсанский филиал госархива области с зоной обслуживания г.Зайсан, Зайсанского и Курчумского районов; в июле 1963г. – Зыряновский филиал госархива области с зоной обслуживания г.Зыряновск, г.Серебрянск, Большенарымского, Самарского и Зыряновского районов. Под контроль госархива области вошли города Лениногорск, Усть-Каменогорск, Шемонаиха, Глубоковский, Уланский, Таврический, Шемонаихинский районы. В соответствии с постановлением Совета Министров Казахской ССР от 11 января 1966г. создан Лениногорский филиал госархива области с зоной обслуживания г.Лениногорск и Шемонаихинского района.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Сеть архивных учреждений области к 1967г. полностью сформировалась и состояла из:</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">1. Архивного отдела при исполнительном комитете Восточно-Казахстанского областного Совета депутатов трудящихся;</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">2. Государственного архива Восточно-Казахстанской области;</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">3. Зайсанского филиала госархива области;</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">4. Зыряновского филиала госархива области;</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">5. Лениногорского филиала госархива области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">С 7 октября 1977г. в соответствии с Конституцией СССР Советы депутатов трудящихся переименованы в Советы народных депутатов. Архивный отдел в связи с этим стал именоваться архивным отделом при исполнительном комитете Восточно-Казахстанского областного Совета народных депутатов.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В период с 1977г. по 1991г. при райгорисполкомах области были созданы районные, городские хозрасчетные архивы по личному составу, которые имели право юридического лица, счета в отделениях госбанка, в организационном, кадровом и финансовом отношениях подчинялись горрайисполкомам, научно-методическое руководство и контроль осуществлял архивный отдел.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В соответствии с решением Восточно-Казахстанского облисполкома от 18 декабря 1980г. №671 архивный отдел стал именоваться архивным отделом исполнительного комитета Восточно-Казахстанского областного Совета народных депутатов.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Архивный отдел, госархив области и его филиалы, а также хозрасчетные архивы документов по личному составу входили в единую систему Главного архивного управления при Совете Министров Казахской ССР со штатными расписаниями и фондом заработной платы, утвержденными республиканским архивным управлением.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В сеть архивных учреждений области по состоянию на 1 января 1992г. входили архивный отдел, госархив области и его филиалы и 10 хозрасчетных архивов документов по личному составу.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В соответствии с постановлением 9 сессии Восточно-Казахстанского областного Совета народных депутатов 21 созыва 20 февраля 1992г. «Об упразднении отделов, управлений и других структурных подразделений исполкома облсовета», на основании Закона Республики Казахстан «О приостановлении действий отдельных норм Конституции (Основного Закона) Казахской ССР в переходный период» архивный отдел был упразднен.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В соответствии с решением Главы Восточно-Казахстанской областной администрации от 9 марта 1992г. №41 «О совершенствовании структуры организации исполнительно-распорядительных органов Восточно-Казахстанской областной администрации» архивный отдел Восточно-Казахстанской областной администрации «…определен как орган управления, состоящий на областном бюджете».</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">На основании решения Главы Восточно-Казахстанской областной администрации от 13 августа 1992г. №109 архивный отдел реорганизован в управление архивами и документацией Восточно-Казахстанской областной администрации. В его подчинение вошел госархив области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В соответствии с распоряжением Главы Восточно-Казахстанской областной администрации от 27 апреля 1992г. №336-р «О создании районных и городских архивов по личному составу при районных и городских администрациях Восточно-Казахстанской области» хозрасчетные архивы документов по личному составу преобразованы в районные и городские архивы по личному составу при районных и городских администрациях с содержанием за счет средств районных и городских бюджетов.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В соответствии со ст.87 Конституции Республики Казахстан, принятой 30 августа 1995г., с декабря 1995г. местные и исполнительные органы возглавили Акимы соответствующих административно-территориальных единиц. В связи с этим управление архивами и документацией стало именоваться управлением архивами и документацией Восточно-Казахстанской области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Распоряжением Акима Восточно-Казахстанской области от 15 февраля 1996г. №1-63р «О совершенствовании структуры областных исполнительных органов» управление архивами и документацией было реорганизовано в управление архивами Восточно-Казахстанской области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Указом Президента Республики Казахстан от 3 мая 1997г. «О дальнейших мерах по совершенствованию административно-территориального устройства Республики Казахстан» была ликвидирована Семипалатинская область.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">К трем филиалам госархива области добавились Аягозский (с зоной обслуживания Аягозского и Урджарского районов) и Чарский филиалы. Последний на основании распоряжения Акима Восточно-Казахстанской области от 1 сентября 1997г. №1-125-р «О совершенствовании сети государственной службы в Жарминском районе Восточно-Казахстанской области» с 1 ноября 1997г. был упразднен. На базе Чарского филиала и Жарминского районного архива организован Жарминский филиал госархива области с зоной обслуживания Жарминского, Кокпектинского районов. Таким образом, в сеть архивных учреждений области, кроме управления, Центра документации новейшей истории г.Семипалатинска и районных архивов вошли госархив области и его пять филиалов: Аягозский, Жарминский, Зайсанский, Зыряновский, Лениногорский.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">На основании постановления Восточно-Казахстанского областного акимата от 7 мая 2009г. №65 «Некоторые вопросы государственных архивных учреждений Восточно-Казахстанской области» госархив области и филиалы выделены из состава управления архивов и документацией области в самостоятельные юридические лица.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Постановлением Восточно-Казахстанского областного акимата от 23 января 2012 года № 10 «О переименовании государственных архивных учреждений» Государственное учреждение «Государственный архив Восточно-Казахстанской области» было реорганизовано в Коммунальное государственное учреждение «Государственный архив» управления архивов и документации Восточно-Казахстанской области.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В январе 2013 года на основании постановления Восточно-Казахстанского областного акимата от 10 января 2013 года № 2 «О реорганизации некоторых государственных архивных учреждений Восточно-Казахстанской области» вновь были созданы филиалы КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области в составе:</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">- Аягозский филиал КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области с зоной обслуживания Аягозский и Урджарский районы;</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">- Жарминский филиал КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области с зоной обслуживания Жарминский и Кокпектинский районы;</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">- Зайсанский филиал КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области с зоной обслуживания Зайсанский, Курчумский, Тарбагатайский районы;</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">- Зыряновский филиал КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области с зоной обслуживания Зыряновский, Катон-Карагайский районы;</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">- Риддерский филиал КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области с зоной обслуживания г. Риддер, Шемонаихинский район;</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">- Усть-Каменогорский филиал по личному составу КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области, образован на базе отдела по исполнению запросов социально-правового характера КГУ «Государственный архив» управления архивов и документации ВКО.</span></p>
+                            <p style="text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В зону обслуживания КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области входили: г. Усть-Каменогорск, Глубоковский и Уланский районы.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Постановлением Восточно-Казахстанского областного акимата от 30 июля 2013 года № 196 «О некоторых вопросах государственных учреждений Управления культуры Восточно-Казахстанской области и Управления архивов и документации Восточно-Казахстанской области» реорганизовано государственное учреждение «Управление архивов и документации Восточно-Казахстанской области» путем присоединения к государственному учреждению «Управление культуры Восточно-Казахстанской области». В связи с чем, КГУ «Государственный архив» управления архивов и документации Восточно-Казахстанской области и его филиалы на основании постановления Восточно-Казахстанского областного акимата от 23 сентября 2013 года № 250 «О переименовании коммунальных государственных учреждений и коммунальных государственных казенных предприятий управления культуры, архивов и документации Восточно-Казахстанской области» стали подчиняться государственному учреждению «Управление культуры, архивов и документации Восточно-Казахстанской области».</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">В 2019 году произошло переименование Зыряновского филиала КГУ «Государственный архив» управления культуры, архивов и документации Восточно-Казахстанской области. На основании Указа Президента Республики Казахстан от 28 декабря 2018 года № 821 Зыряновский район и город Зыряновск Восточно-Казахстанской области переименованы в район Алтай и город Алтай. В связи с чем, 11 февраля 2019 года Зыряновский филиал прошел государственную перерегистрацию в органах юстиции и стал именоваться филиал Алтай КГУ «Государственный архив» управления культуры, архивов и документации Восточно-Казахстанской области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">Очередные изменения в подчиненности государственного архива Восточно-Казахстанской области произошли в 2020 году. Постановлением Восточно-Казахстанского областного акимата от 11 июня 2020 года № 188 создано Государственное учреждение «Управление цифровизации и архивов Восточно-Казахстанской области», в подчинение которого перешел государственный архив Восточно-Казахстанской области.</span></p>
+                            <p style="margin: 1em 0px; line-height: 1.5em; text-indent: 2em; text-align: justify;"><span style="font-family: 'times new roman', times; font-size: medium;">На основании Указа Президента Республики Казахстан «О некоторых вопросах административно-территориального устройства» от 4 мая 2022 года №887 образована область Абай с административным центром в городе Семее путем выделения из состава Восточно-Казахстанской области. В связи с чем, постановлением Восточно-Казахстанского областного акимата от 7 июня 2022 года № 138 сняты с учетной регистрации Аягозский и Жарминский филиалы государственного архива Восточно-Казахстанской области, которые перешли в подчинение вновь образованного ГУ «Центр документации новейшей истории» управления культуры, развития языков и архивного дела области Абай.</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правое меню -->
+                <div id="right-menu-box">
+                    <div id="first-right-menu">
+                        <ul>
+                            <li><a href="symbols.html" data-i18n="right-symbols">Государственные Символы РК</a></li>
+                            <li><a href="laws.html" data-i18n="right-laws">Законодательные и нормативные акты</a></li>
+                            <li><a href="methods.html" data-i18n="right-methods">Научно-методическая база</a></li>
+                            <li><a href="paid-services.html" data-i18n="right-paid-services">Платные услуги</a></li>
+                            <li><a href="gov-services.html" data-i18n="right-gov-services">Государственные услуги</a></li>
+                            <li><a href="schedule.html" data-i18n="right-schedule">ГРАФИК приема граждан по личным вопросам</a></li>
+                            <li><a href="anticor.html" data-i18n="right-anticor">Антикоррупция</a></li>
+                            <li><a href="documents.html" data-i18n="right-documents">Документы</a></li>
+                            <li><a href="reports.html" data-i18n="right-reports">Доклады, информации</a></li>
+                            <li><a href="publicism.html" data-i18n="right-publicism">Публицистика</a></li>
+                            <li><a href="speeches.html" data-i18n="right-speeches">Выступления</a></li>
+                            <li><a href="collections.html" data-i18n="right-collections">Сборники документов</a></li>
+                            <li><a href="videos.html" data-i18n="right-videos">Архивные видеоматериалы</a></li>
+                            <li><a href="personal-funds.html" data-i18n="right-personal-funds">Личные фонды</a></li>
+                            <li><a href="region-history.html" data-i18n="right-region-history">История края</a></li>
+                            <li><a href="gallery.html" data-i18n="right-gallery">Фотогалерея</a></li>
+                            <li><a href="glossary.html" data-i18n="right-glossary">Глоссарий</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href='metrics.html' id="but-metrics" class="button-text" style="margin-bottom:7px;"><span data-i18n="btn-metrics">Метрические книги</span></a>
+                        <a href='calendar.html' id="but-calendar" class="button-text"><span data-i18n="btn-calendar">Календарь памятных дат</span></a>
+                    </div>
+                    <div id="calendar-menu" style="padding:15px; text-align:center;">
+                        <a href="https://www.gismeteo.ru/city/daily/5201/" target="_blank" style="text-decoration:none; color:#1b365d; font-weight:bold; font-size:13px;">
+                            Погода в Усть-Каменогорске
+                        </a>
+                    </div>
+                    <div id="but-box" style="margin-top: 10px;">
+                        <a href='exhibitions.html' id="but-show" class="button-text"><span data-i18n="btn-exhibitions">Выставки</span></a>
+                        <a href='advertisements.html' id="but-advert" class="button-text"><span data-i18n="btn-advertisements">Объявления</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <div id="bottom-content">
+        <div class="content-block">
+            <div id="bottom-box">
+                <div class="site-info" data-i18n="footer-info">
+                    070004, РК, Восточно-Казахстанская область г. Усть-Каменогорск, ул. Головкова, 26/1<br />
+                    Администратор сайта: Бекниязқызы Жангуль. Copyright © 2010-2026
+                </div>
+                <br />
+                <div id="bn-panel">
+                    <a href="http://www.akorda.kz/" target="_blank"><img alt="Президент РК" src='Content/Images/lang/prez_ru.jpg' title="Официальный сайт Президента Республики Казахстан" /></a>
+                    <a href="https://www.gov.kz/memleket/entities/vko-uca/activities/11180?lang=ru" target="_blank"><img alt="Управление цифровизации ВКО" src='Content/Images/lang/bn_e_archive.jpg' title="Управление цифровизации и архивов Восточно-Казахстанской области" /></a>
+                    <a href="http://veteran-vko.kz/ru/" target="_blank"><img alt="Ветераны ВКО" src='Content/Images/lang/b_earhiv_ru.jpg' title="Ветераны Восточно-Казахстанской Области" /></a>
+                    <div class="futer_log">
+                        <a href="https://e-vko.gov.kz/ru/services/index?id=38" target="_blank"><img alt="Центр электронных услуг" src='Content/Images/lang/ceu_ru.png' title="Центр электронных услуг" /></a>
+                        <a href="https://egov.kz/cms/ru/services/apostil/e_059" target="_blank"><img alt="eGov" src='Content/Images/lang/госуслуга рус.png' title="Выдача архивных справок eGov" /></a>
+                    </div>
+                    <a href="https://www.qazlatyn.kz/converter/text" target="_blank"><img alt="Конвертер" src='Content/Images/lang/logo_konverter.jpg' title="Текстовый конвертер" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="bottom"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
